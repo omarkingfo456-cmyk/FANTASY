@@ -45,3 +45,123 @@
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fantasy Store - صيانة دراعات</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">F</div>
+            <div>
+                <h1>Fantasy Store</h1>
+                <p>صيانة دراعات البلايستيشن</p>
+            </div>
+        </div>
+
+        <button class="theme-button" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <h2>مرحباً بك في Fantasy Store 🎮</h2>
+
+            <p>
+                متخصصون في صيانة وإصلاح دراعات البلايستيشن
+            </p>
+
+            <button class="main-button">
+                خدمات الصيانة
+            </button>
+        </section>
+
+
+        <section class="services">
+
+            <h2>خدماتنا</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <div class="card-icon">🎮</div>
+                    <h3>صيانة الدراعات</h3>
+                    <p>
+                        إصلاح مشاكل الأنالوج والأزرار والشحن
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🔧</div>
+                    <h3>تغيير القطع</h3>
+                    <p>
+                        تغيير القطع التالفة وإعادة تشغيل الدراع بكفاءة
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>فحص الدراع</h3>
+                    <p>
+                        فحص كامل للدراع ومعرفة العطل قبل الصيانة
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="invoice">
+
+            <h2>🧾 الفاتورة</h2>
+
+            <p>
+                يمكنك معرفة تفاصيل عملية الصيانة وتكلفة الإصلاح.
+            </p>
+
+            <button class="main-button">
+                عرض الفاتورة
+            </button>
+
+        </section>
+
+
+        <section class="contact">
+
+            <h2>📱 تواصل معنا</h2>
+
+            <p>
+                للاستفسار أو حجز صيانة، تواصل معنا عبر واتساب
+            </p>
+
+            <a href="#" class="whatsapp-button">
+                💬 تواصل عبر واتساب
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>© 2026 Fantasy Store</p>
+        <p>صيانة دراعات البلايستيشن</p>
+    </footer>
+
+
+    <script src="main.js"></script>
+
+</body>
+</html>
+
+
