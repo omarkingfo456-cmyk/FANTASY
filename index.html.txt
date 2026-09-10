@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fantasy Store</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <div class="logo">
+            <div class="logo-icon">F</div>
+            <h1>Fantasy</h1>
+        </div>
+
+        <p class="subtitle">FANTASY STORE</p>
+
+        <label>اسم المستخدم</label>
+
+        <select id="username">
+            <option value="">-- اختر المستخدم --</option>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+        </select>
+
+        <label>كلمة المرور</label>
+
+        <input type="password" id="password" placeholder="••••••••">
+
+        <p id="error"></p>
+
+        <button onclick="login()">تسجيل الدخول</button>
+
+    </div>
+
+    <button class="theme-button" onclick="toggleTheme()">🌙</button>
+
+    <script src="main.js"></script>
+
+</body>
+</html>
