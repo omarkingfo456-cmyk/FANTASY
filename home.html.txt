@@ -9,3 +9,86 @@
 </head>
 
 <body>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Store</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #0b0b0b;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            color: #f5c542;
+            margin-top: 40px;
+        }
+
+        .services {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .service {
+            width: 250px;
+            height: 250px;
+            background: #151515;
+            border: 2px solid #333;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .service:hover {
+            border-color: #f5c542;
+        }
+
+        .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #f5c542;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>FANTASY STORE</h1>
+
+    <p>اختر القسم</p>
+
+    <div class="services">
+
+        <a href="controllers.html" class="service">
+            <div class="icon">🎮</div>
+            <h2>صيانة دراعات</h2>
+        </a>
+
+        <a href="devices.html" class="service">
+            <div class="icon">🕹️</div>
+            <h2>صيانة الأجهزة</h2>
+        </a>
+
+    </div>
+
+</body>
+</html>
