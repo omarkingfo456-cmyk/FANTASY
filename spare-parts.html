@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قطع الغيار - Fantasy Store</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #070d16;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* العنوان العلوي */
+
+.top-bar {
+    height: 75px;
+    background: #101722;
+    border-bottom: 1px solid #24374d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.top-title {
+    color: #f5c542;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.cloud {
+    position: absolute;
+    left: 25px;
+    color: #20d878;
+    font-weight: bold;
+}
+
+
+/* الصفحة */
+
+.page {
+    width: calc(100% - 270px);
+    margin-right: 250px;
+    padding: 30px;
+}
+
+
+/* عنوان قطع الغيار */
+
+.page-title {
+    text-align: right;
+    font-size: 25px;
+    margin-bottom: 5px;
+    color: #f5c542;
+}
+
+.subtitle {
+    text-align: right;
+    color: #8d9caf;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+
+/* قسم PS4 و PS5 */
+
+.parts-section {
+    background: #0b1522;
+    border: 1px solid #1d456d;
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 25px;
+}
+
+
+/* رأس القسم */
+
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.console {
+    background: #087cf5;
+    border-radius: 10px;
+    padding: 10px 28px;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+
+/* زر إضافة */
+
+.add-btn {
+    background: #087cf5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background: #1590ff;
+}
+
+
+/* رؤوس الأعمدة */
+
+.table-head {
+    display: grid;
+    grid-template-columns:
+        2fr
+        1fr
+        1fr
+        1fr
+        1fr
+        1.5fr;
+
+    background: #102a46;
+    border-radius: 9px 9px 0 0;
+    padding: 14px 10px;
+    color: #dce8f5;
+    font-weight: bold;
+}
+
+
+/* صف القطعة */
+
+.part-row {
+    display: grid;
+    grid-template-columns:
+        2fr
+        1fr
+        1fr
+        1fr
+        1fr
+        1.5fr;
+
+    align-items: center;
+
+    background: #091421;
+
+    border-bottom: 1px solid #1b3854;
+
+    padding: 12px 10px;
+}
+
+
+/* اسم القطعة */
+
+.part-name {
+    font-size: 16px;
+}
+
+
+/* النوع */
+
+.part-type {
+    color: #b8c7d8;
+}
+
+
+/* السعر */
+
+.price {
+    color: #dbe7f4;
+}
+
+
+/* العدد */
+
+.quantity {
+    font-size: 17px;
+}
+
+
+/* الإجراءات */
+
+.actions {
+    display: flex;
+    gap: 7px;
+}
+
+.edit {
+    background: #087cf5;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 8px 13px;
+    cursor: pointer;
+}
+
+.delete {
+    background: #e62d3f;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 8px 13px;
+    cursor: pointer;
+}
+
+.edit:hover,
+.delete:hover {
+    opacity: .85;
+}
+
+
+/* القائمة الجانبية */
+
+.menu {
+    position: fixed;
+    right: 20px;
+    top: 95px;
+    width: 220px;
+    background: #101722;
+    border: 1px solid #20364d;
+    border-radius: 14px;
+    padding: 10px;
+}
+
+.menu h3 {
+    text-align: center;
+    color: #f5c542;
+    margin: 5px 0 12px;
+}
+
+.menu button {
+    width: 100%;
+    height: 45px;
+    margin-bottom: 7px;
+    background: #111f32;
+    color: white;
+    border: 1px solid #203b5c;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: right;
+    padding-right: 13px;
+    font-size: 15px;
+}
+
+.menu button:hover {
+    background: #f5c542;
+    color: #111;
+}
+
+.menu .selected {
+    background: #f5c542;
+    color: #111;
+    font-weight: bold;
+}
+
+
+/* أزرار أسفل الصفحة */
+
+.bottom {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.bottom button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #36516f;
+    background: #111d2b;
+    color: white;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+
+/* نافذة الإضافة */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.7);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-box {
+    width: 400px;
+    background: #101a28;
+    border: 1px solid #315477;
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.modal-box h2 {
+    color: #f5c542;
+    text-align: center;
+}
+
+.modal-box label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 6px;
+}
+
+.modal-box input,
+.modal-box select {
+    width: 100%;
+    height: 43px;
+    background: #0b1522;
+    color: white;
+    border: 1px solid #315477;
+    border-radius: 7px;
+    padding: 0 10px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    height: 45px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.save {
+    background: #087cf5;
+    color: white;
+}
+
+.cancel {
+    background: #333;
+    color: white;
+}
+
+
+/* الموبايل */
+
+@media(max-width:800px) {
+
+    .page {
+        width: 96%;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .menu {
+        position: static;
+        width: 96%;
+        margin: 20px auto;
+    }
+
+    .table-head,
+    .part-row {
+        min-width: 850px;
+    }
+
+    .parts-section {
+        overflow-x: auto;
+    }
+
+    .cloud {
+        display: none;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- الشريط العلوي -->
+
+<div class="top-bar">
+
+    <div class="top-title">
+        مرحبًا بك في صيانة الدراعات
+    </div>
+
+    <div class="cloud">
+        متصل بالسحابة (مباشر) ✅
+    </div>
+
+</div>
+
+
+<!-- القائمة -->
+
+<div class="menu">
+
+    <h3>القائمة</h3>
+
+    <button onclick="location.href='new-invoice.html'">
+        🧾 فاتورة جديدة
+    </button>
+
+    <button onclick="alert('تعديل فاتورة')">
+        ✏️ تعديل فاتورة
+    </button>
+
+    <button onclick="alert('جدول أسعار')">
+        💰 جدول أسعار
+    </button>
+
+    <button class="selected">
+        🔧 قطع غيار
+    </button>
+
+    <button onclick="alert('سجل الفواتير')">
+        📋 سجل الفواتير
+    </button>
+
+    <button onclick="alert('الفواتير المعلقة')">
+        ⏳ الفواتير المعلقة
+    </button>
+
+    <button onclick="alert('الاستلام والتسليم')">
+        📦 الاستلام والتسليم
+    </button>
+
+    <button onclick="alert('فاتورة بيع')">
+        🛒 فاتورة بيع
+    </button>
+
+    <button onclick="alert('الإعدادات')">
+        ⚙️ الإعدادات
+    </button>
+
+</div>
+
+
+<!-- المحتوى -->
+
+<div class="page">
+
+    <h1 class="page-title">
+        قطع الغيار
+    </h1>
+
+    <div class="subtitle">
+        إدارة قطع الغيار الخاصة بدراعات فور وفايف
+    </div>
+
+
+    <!-- PS4 -->
+
+    <div class="parts-section">
+
+        <div class="section-head">
+
+            <div class="console">
+                PS4
+            </div>
+
+            <button
+                class="add-btn"
+                onclick="openAdd('PS4')">
+                ＋ إضافة قطعة
+            </button>
+
+        </div>
+
+
+        <div class="table-head">
+
+            <div>القطعة</div>
+            <div>النوع</div>
+            <div>قطاعي</div>
+            <div>تجاري</div>
+            <div>العدد</div>
+            <div>الإجراءات</div>
+
+        </div>
+
+
+        <div id="ps4-list">
+
+            <div class="part-row">
+
+                <div class="part-name">بطارية</div>
+                <div class="part-type">أصلي</div>
+                <div class="price">150</div>
+                <div class="price">120</div>
+                <div class="quantity">5</div>
+
+                <div class="actions">
+                    <button class="edit">✏️ تعديل</button>
+                    <button class="delete">🗑 حذف</button>
+                </div>
+
+            </div>
+
+
+            <div class="part-row">
+
+                <div class="part-name">سوكيت</div>
+                <div class="part-type">أصلي</div>
+                <div class="price">120</div>
+                <div class="price">90</div>
+                <div class="quantity">8</div>
+
+                <div class="actions">
+                    <button class="edit">✏️ تعديل</button>
+                    <button class="delete">🗑 حذف</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PS5 -->
+
+    <div class="parts-section">
+
+        <div class="section-head">
+
+            <div class="console">
+                PS5
+            </div>
+
+            <button
+                class="add-btn"
+                onclick="openAdd('PS5')">
+                ＋ إضافة قطعة
+            </button>
+
+        </div>
+
+
+        <div class="table-head">
+
+            <div>القطعة</div>
+            <div>النوع</div>
+            <div>قطاعي</div>
+            <div>تجاري</div>
+            <div>العدد</div>
+            <div>الإجراءات</div>
+
+        </div>
+
+
+        <div id="ps5-list">
+
+            <div class="part-row">
+
+                <div class="part-name">بطارية</div>
+                <div class="part-type">أصلي</div>
+                <div class="price">250</div>
+                <div class="price">200</div>
+                <div class="quantity">3</div>
+
+                <div class="actions">
+                    <button class="edit">✏️ تعديل</button>
+                    <button class="delete">🗑 حذف</button>
+                </div>
+
+            </div>
+
+
+            <div class="part-row">
+
+                <div class="part-name">سوكيت</div>
+                <div class="part-type">أصلي</div>
+                <div class="price">180</div>
+                <div class="price">150</div>
+                <div class="quantity">5</div>
+
+                <div class="actions">
+                    <button class="edit">✏️ تعديل</button>
+                    <button class="delete">🗑 حذف</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- أزرار الأسفل -->
+
+<div class="bottom">
+
+    <button onclick="location.href='controllers.html'">
+        🚪
+    </button>
+
+    <button onclick="document.body.classList.toggle('light')">
+        🌙
+    </button>
+
+</div>
+
+
+<!-- نافذة إضافة قطعة -->
+
+<div class="modal" id="addModal">
+
+    <div class="modal-box">
+
+        <h2>إضافة قطعة</h2>
+
+        <label>اسم القطعة</label>
+
+        <input id="partName" type="text"
+               placeholder="اكتب اسم القطعة">
+
+        <label>النوع</label>
+
+        <select id="partType">
+
+            <option>أصلي</option>
+            <option>تجاري</option>
+
+        </select>
+
+        <label>السعر القطاعي</label>
+
+        <input id="retailPrice" type="number">
+
+        <label>السعر التجاري</label>
+
+        <input id="commercialPrice" type="number">
+
+        <label>العدد</label>
+
+        <input id="partQuantity" type="number" value="0">
+
+
+        <div class="modal-buttons">
+
+            <button class="cancel"
+                    onclick="closeAdd()">
+                إلغاء
+            </button>
+
+            <button class="save"
+                    onclick="addPart()">
+                حفظ
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let selectedConsole = "";
+
+
+/* فتح الإضافة */
+
+function openAdd(consoleType) {
+
+    selectedConsole = consoleType;
+
+    document.getElementById("addModal").style.display = "flex";
+
+}
+
+
+/* إغلاق */
+
+function closeAdd() {
+
+    document.getElementById("addModal").style.display = "none";
+
+}
+
+
+/* إضافة قطعة */
+
+function addPart() {
+
+    const name =
+        document.getElementById("partName").value;
+
+    const type =
+        document.getElementById("partType").value;
+
+    const retail =
+        document.getElementById("retailPrice").value;
+
+    const commercial =
+        document.getElementById("commercialPrice").value;
+
+    const quantity =
+        document.getElementById("partQuantity").value;
+
+
+    if (name === "") {
+
+        alert("اكتب اسم القطعة أولاً");
+
+        return;
+    }
+
+
+    const row = document.createElement("div");
+
+    row.className = "part-row";
+
+    row.innerHTML = `
+
+        <div class="part-name">
+            ${name}
+        </div>
+
+        <div class="part-type">
+            ${type}
+        </div>
+
+        <div class="price">
+            ${retail}
+        </div>
+
+        <div class="price">
+            ${commercial}
+        </div>
+
+        <div class="quantity">
+            ${quantity}
+        </div>
+
+        <div class="actions">
+
+            <button class="edit"
+                    onclick="alert('تعديل القطعة')">
+                ✏️ تعديل
+            </button>
+
+            <button class="delete"
+                    onclick="this.closest('.part-row').remove()">
+                🗑 حذف
+            </button>
+
+        </div>
+    `;
+
+
+    if (selectedConsole === "PS4") {
+
+        document.getElementById("ps4-list")
+            .appendChild(row);
+
+    } else {
+
+        document.getElementById("ps5-list")
+            .appendChild(row);
+
+    }
+
+
+    closeAdd();
+
+}
+
+</script>
+
+</body>
+</html>
