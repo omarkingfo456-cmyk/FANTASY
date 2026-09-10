@@ -217,3 +217,11 @@ button:hover {
     cursor: pointer;
     font-size: 18px;
 }
+<div class="password-container">
+    <input type="password" id="password" placeholder="كلمة المرور">
+    <span class="eye" onclick="togglePassword()">👁</span>
+</div>
+
+<p id="error"></p>
+
+<button onclick="login()">تسجيل الدخول</button>
