@@ -417,6 +417,40 @@ function goBack() {
 }
 
 </script>
+<script>
+function saveData() {
+    const data = {};
 
+    document.querySelectorAll("input, textarea, select").forEach((element, index) => {
+        const key = element.id || "field_" + index;
+        data[key] = element.value;
+    });
+
+    localStorage.setItem("fantasyStoreData", JSON.stringify(data));
+
+    alert("✅ تم حفظ البيانات بنجاح");
+}
+
+function loadData() {
+    const saved = localStorage.getItem("fantasyStoreData");
+
+    if (!saved) return;
+
+    const data = JSON.parse(saved);
+
+    document.querySelectorAll("input, textarea, select").forEach((element, index) => {
+        const key = element.id || "field_" + index;
+
+        if (data[key] !== undefined) {
+            element.value = data[key];
+        }
+    });
+}
+
+window.addEventListener("load", loadData);
+</script>
 </body>
 </html>
+<button onclick="saveData()" style="background:#1677ff;color:white;">
+    💾 حفظ بيانات الاستلام
+</button>
