@@ -198,3 +198,22 @@ button:hover {
     font-size: 18px;
     cursor: pointer;
 }
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-container input {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 45px;
+}
+
+.eye {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+}
