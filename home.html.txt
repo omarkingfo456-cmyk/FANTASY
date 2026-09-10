@@ -9,16 +9,3 @@
 </head>
 
 <body>
-
-    <div class="login-box">
-        <h1>🎮 Fantasy Store</h1>
-
-        <p class="subtitle">صيانة دراعات PS4</p>
-
-        <button onclick="location.href='index.html'">
-            تسجيل الخروج
-        </button>
-    </div>
-
-</body>
-</html>
