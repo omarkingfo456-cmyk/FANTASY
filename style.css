@@ -176,3 +176,25 @@ button:hover {
         font-size: 19px;
     }
 }
+.password-box {
+    position: relative;
+    width: 100%;
+}
+
+.password-box input {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 50px;
+}
+
+.eye-button {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    padding: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
