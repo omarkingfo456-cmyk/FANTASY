@@ -1,1 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صيانة دراعات - Fantasy Store</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #0b0b0b;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .top-bar {
+            height: 70px;
+            background: #151515;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 25px;
+        }
+
+        .cloud {
+            color: #35d07f;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: #f5c542;
+            white-space: nowrap;
+        }
+
+        .menu {
+            position: absolute;
+            right: 20px;
+            top: 90px;
+            width: 220px;
+            background: #151515;
+            border: 1px solid #333;
+            border-radius: 14px;
+            padding: 10px;
+        }
+
+        .menu h3 {
+            text-align: center;
+            color: #f5c542;
+            margin: 5px 0 10px;
+        }
+
+        .menu button {
+            width: 100%;
+            padding: 12px 8px;
+            margin: 4px 0;
+            border: none;
+            border-radius: 8px;
+            background: #222;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            text-align: right;
+        }
+
+        .menu button:hover {
+            background: #f5c542;
+            color: #111;
+        }
+
+        .content {
+            margin-right: 270px;
+            padding: 100px 30px;
+            text-align: center;
+        }
+
+        .content h2 {
+            color: #f5c542;
+            font-size: 28px;
+        }
+
+        .content p {
+            color: #aaa;
+            font-size: 17px;
+        }
+
+        .bottom-left {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .bottom-left button {
+            width: 48px;
+            height: 48px;
+            border: 1px solid #444;
+            border-radius: 50%;
+            background: #151515;
+            color: white;
+            font-size: 21px;
+            cursor: pointer;
+        }
+
+        .bottom-left button:hover {
+            border-color: #f5c542;
+        }
+
+        body.light {
+            background: #f1f1f1;
+            color: #111;
+        }
+
+        body.light .top-bar,
+        body.light .menu,
+        body.light .bottom-left button {
+            background: white;
+            border-color: #ccc;
+        }
+
+        body.light .menu button {
+            background: #eee;
+            color: #111;
+        }
+
+        body.light .menu button:hover {
+            background: #f5c542;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+
+        <div class="cloud">
+            متصل بالسحابة (مباشر) ✅
+        </div>
+
+        <div class="title">
+            مرحبًا بك في صيانة الدراعات
+        </div>
+
+    </div>
+
+    <div class="menu">
+
+        <h3>القائمة</h3>
+
+        <button onclick="newInvoice()">🧾 فاتورة جديدة</button>
+        <button onclick="editInvoice()">✏️ تعديل فاتورة</button>
+        <button onclick="priceTable()">💰 جدول أسعار</button>
+        <button onclick="spareParts()">🔧 قطع غيار</button>
+        <button onclick="invoiceHistory()">📋 سجل الفواتير</button>
+        <button onclick="pendingInvoices()">⏳ الفواتير المعلقة</button>
+        <button onclick="delivery()">📦 الاستلام والتسليم</button>
+        <button onclick="saleInvoice()">🛒 فاتورة بيع</button>
+        <button onclick="settings()">⚙️ الإعدادات</button>
+
+    </div>
+
+    <div class="content">
+
+        <h2>صيانة دراعات</h2>
+
+        <p>
+            اختر أحد الأقسام من القائمة لبدء العمل.
+        </p>
+
+    </div>
+
+    <div class="bottom-left">
+
+        <button onclick="logout()" title="خروج">🚪</button>
+
+        <button onclick="toggleLight()" title="تغيير الإضاءة">🌙</button>
+
+    </div>
+
+    <script>
+
+        function logout() {
+            window.location.href = "index.html";
+        }
+
+        function toggleLight() {
+            document.body.classList.toggle("light");
+        }
+
+        function newInvoice() {
+            alert("فاتورة جديدة");
+        }
+
+        function editInvoice() {
+            alert("تعديل فاتورة");
+        }
+
+        function priceTable() {
+            alert("جدول أسعار");
+        }
+
+        function spareParts() {
+            alert("قطع غيار");
+        }
+
+        function invoiceHistory() {
+            alert("سجل الفواتير");
+        }
+
+        function pendingInvoices() {
+            alert("الفواتير المعلقة");
+        }
+
+        function delivery() {
+            alert("الاستلام والتسليم");
+        }
+
+        function saleInvoice() {
+            alert("فاتورة بيع");
+        }
+
+        function settings() {
+            alert("الإعدادات");
+        }
+
+    </script>
+
+</body>
+</html>
