@@ -26,7 +26,7 @@ function login() {
     const error = document.getElementById("error");
 
     // بيانات الدخول
-    if (username === "admin" && password === "1234") {
+    if (username === "admin" && password === "123456") {
         error.textContent = "تم تسجيل الدخول بنجاح";
 
         // الانتقال للصفحة الرئيسية
