@@ -1285,3 +1285,51 @@ function(){
         type:document.getElementById("partType").value,
 
         retail:document.getElementById("partRetail").v
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>FANTASY STORE</title>
+
+<style>
+body{
+    margin:0;
+    background:#061027;
+    color:white;
+    font-family:Tahoma,Arial;
+    text-align:center;
+    padding:50px;
+}
+
+button{
+    padding:15px 30px;
+    margin:10px;
+    border:0;
+    border-radius:10px;
+    background:#1675d1;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>FANTASY STORE</h1>
+
+<p id="message">اضغط على الزر للتجربة</p>
+
+<button id="testButton">اضغط هنا</button>
+
+<script>
+document.getElementById("testButton").addEventListener("click", function(){
+
+    document.getElementById("message").textContent =
+    "الأوامر شغالة ✅";
+
+});
+</script>
+
+</body>
+</html>
