@@ -405,9 +405,9 @@ body{
 
 <header class="topbar">
 
-    <div class="brand">
-        First <span>— Fantasy Store</span>
-    </div>
+<div class="brand">
+    FANTASY STORE
+</div>
 
     <div class="top-left">
 
@@ -420,10 +420,7 @@ body{
             ☀️
         </button>
 
-        <div class="user">
-            عبدالله
-        </div>
-
+    
     </div>
 
 </header>
@@ -1235,3 +1232,50 @@ function renderParts(){
 
 document.addEventListener(
     "DO
+<script>
+
+function showPage(id, button) {
+
+    document.querySelectorAll('.page').forEach(function(page) {
+        page.style.display = 'none';
+    });
+
+    var selected = document.getElementById(id);
+
+    if (selected) {
+        selected.style.display = 'block';
+    }
+
+    document.querySelectorAll('.menu button').forEach(function(btn) {
+        btn.classList.remove('active');
+    });
+
+    if (button) {
+        button.classList.add('active');
+    }
+}
+
+function goHome() {
+
+    document.querySelectorAll('.page').forEach(function(page) {
+        page.style.display = 'none';
+    });
+
+    var home = document.getElementById('home');
+
+    if (home) {
+        home.style.display = 'block';
+    }
+
+    document.querySelectorAll('.menu button').forEach(function(btn) {
+        btn.classList.remove('active');
+    });
+
+    var firstButton = document.querySelector('.menu button');
+
+    if (firstButton) {
+        firstButton.classList.add('active');
+    }
+}
+
+</script>
