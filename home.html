@@ -1,94 +1,757 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fantasy Store</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+<title>Fantasy Store</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Tahoma,Arial,sans-serif;
+}
+
+body{
+    background:#050a12;
+    color:white;
+    min-height:100vh;
+}
+
+/* ================= الشريط العلوي ================= */
+
+.topbar{
+    height:70px;
+    background:#08101b;
+    border-bottom:1px solid #18324d;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 25px;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+}
+
+.logo{
+    color:#ffc400;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.status{
+    color:#39d98a;
+    font-size:14px;
+}
+
+/* ================= القائمة الجانبية ================= */
+
+.sidebar{
+    position:fixed;
+    top:70px;
+    right:0;
+    bottom:0;
+
+    width:260px;
+
+    background:linear-gradient(
+        180deg,
+        #09121f,
+        #050b13
+    );
+
+    border-left:1px solid #18324d;
+
+    padding:20px 14px;
+
+    overflow-y:auto;
+
+    z-index:900;
+}
+
+.sidebar-title{
+    color:#71839a;
+    font-size:13px;
+    margin:5px 10px 15px;
+}
+
+.nav-btn{
+    width:100%;
+
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+
+    background:transparent;
+
+    color:#d8e0ea;
+
+    border:1px solid transparent;
+
+    padding:14px 15px;
+
+    margin-bottom:7px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    text-align:right;
+
+    transition:.2s;
+}
+
+.nav-btn:hover{
+    background:#101e2d;
+    border-color:#21415f;
+    color:#ffc400;
+}
+
+.nav-btn.active{
+    background:linear-gradient(
+        135deg,
+        #ffc400,
+        #e5a900
+    );
+
+    color:#111;
+
+    font-weight:bold;
+
+    box-shadow:
+        0 5px 20px
+        rgba(255,196,0,.18);
+}
+
+.icon{
+    width:25px;
+    text-align:center;
+    font-size:19px;
+}
+
+/* ================= المحتوى ================= */
+
+.main{
+    position:absolute;
+
+    top:70px;
+    right:260px;
+    left:0;
+    bottom:0;
+
+    padding:25px;
+
+    overflow:auto;
+}
+
+/* ================= الصفحة الرئيسية ================= */
+
+.welcome{
+    background:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(0,90,180,.18),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #0b1725,
+            #07101a
+        );
+
+    border:1px solid #1b3d5e;
+
+    border-radius:18px;
+
+    padding:35px;
+
+    margin-bottom:25px;
+}
+
+.welcome h1{
+    color:#ffc400;
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.welcome p{
+    color:#8fa1b5;
+    font-size:15px;
+}
+
+/* ================= الكروت ================= */
+
+.cards{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:18px;
+}
+
+.card{
+    background:#0b141f;
+
+    border:1px solid #1b344c;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    min-height:150px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+
+    border-color:#ffc400;
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,.3);
+}
+
+.card-icon{
+    font-size:40px;
+
+    margin-bottom:15px;
+}
+
+.card h2{
+    color:#fff;
+
+    font-size:19px;
+
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#77899d;
+
+    font-size:13px;
+}
+
+/* ================= العنوان الداخلي ================= */
+
+.page-head{
+    background:#0b141f;
+
+    border:1px solid #1b344c;
+
+    border-radius:15px;
+
+    padding:22px;
+
+    margin-bottom:20px;
+}
+
+.page-head h1{
+    color:#ffc400;
+
+    font-size:25px;
+
+    margin-bottom:7px;
+}
+
+.page-head p{
+    color:#7e91a5;
+}
+
+/* ================= زر الرجوع ================= */
+
+.back-btn{
+    background:#162638;
+
+    color:#fff;
+
+    border:1px solid #29445e;
+
+    padding:10px 18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    margin-bottom:18px;
+}
+
+.back-btn:hover{
+    color:#ffc400;
+
+    border-color:#ffc400;
+}
+
+/* ================= iframe ================= */
+
+.page-frame{
+    width:100%;
+
+    height:
+        calc(100vh - 145px);
+
+    border:0;
+
+    border-radius:15px;
+
+    background:#050a12;
+
+    display:none;
+}
+
+/* ================= الموبايل ================= */
+
+@media(max-width:800px){
+
+    .topbar{
+        padding:0 12px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .status{
+        display:none;
+    }
+
+    .sidebar{
+        width:75px;
+
+        padding:15px 8px;
+    }
+
+    .sidebar-title{
+        display:none;
+    }
+
+    .nav-btn{
+        justify-content:center;
+
+        padding:13px 5px;
+    }
+
+    .nav-btn span:not(.icon){
+        display:none;
+    }
+
+    .icon{
+        font-size:22px;
+    }
+
+    .main{
+        right:75px;
+
+        padding:12px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
 </head>
 
-<body>
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fantasy Store</title>
-
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-            background: #0b0b0b;
-            color: white;
-            text-align: center;
-        }
-
-        h1 {
-            color: #f5c542;
-            margin-top: 40px;
-        }
-
-        .services {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 50px;
-            flex-wrap: wrap;
-        }
-
-        .service {
-            width: 250px;
-            height: 250px;
-            background: #151515;
-            border: 2px solid #333;
-            border-radius: 20px;
-            text-decoration: none;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .service:hover {
-            border-color: #f5c542;
-        }
-
-        .icon {
-            font-size: 80px;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            color: #f5c542;
-            margin: 0;
-        }
-    </style>
-</head>
 
 <body>
 
-    <h1>FANTASY STORE</h1>
 
-    <p>اختر القسم</p>
+<!-- ================= الشريط العلوي ================= -->
 
-    <div class="services">
+<div class="topbar">
 
-        <a href="controllers.html" class="service">
-            <div class="icon">🎮</div>
-            <h2>صيانة دراعات</h2>
-        </a>
-
-        <a href="devices.html" class="service">
-            <div class="icon">🕹️</div>
-            <h2>صيانة الأجهزة</h2>
-        </a>
-
+    <div class="logo">
+        🎮 FANTASY STORE
     </div>
+
+    <div class="status">
+        ● متصل بالسحابة - مباشر
+    </div>
+
+</div>
+
+
+<!-- ================= القائمة ================= -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-title">
+        لوحة التحكم
+    </div>
+
+
+    <button class="nav-btn active"
+            onclick="showHome(this)">
+
+        <span class="icon">🏠</span>
+        <span>الرئيسية</span>
+
+    </button>
+
+
+    <button class="nav-btn"
+            onclick="openPage('فاتورة جديدة','invoice.html',this)">
+
+        <span class="icon">🧾</span>
+        <span>فاتورة جديدة</span>
+
+    </button>
+
+
+    <button class="nav-btn"
+            onclick="openPage('تعديل فاتورة','edit-invoice.html',this)">
+
+        <span class="icon">✏️</span>
+        <span>تعديل فاتورة</span>
+
+    </button>
+
+
+    <button class="nav-btn"
+            onclick="openPage('جدول الأسعار','prices.html',this)">
+
+        <span class="icon">💰</span>
+        <span>جدول الأسعار</span>
+
+    </button>
+
+
+    <button class="nav-btn"
+            onclick="openPage('قطع الغيار','spare-parts.html',this)">
+
+        <span class="icon">🔧</span>
+        <span>قطع الغيار</span>
+
+    </button>
+
+
+    <button class="nav-btn"
+            onclick="openPage('سجل الفواتير','invoices.html',this)">
+
+        <span class="icon">📋</span>
+        <span>سجل الفواتير</span>
+
+    </button>
+
+
+    <button class="nav-btn"
+            onclick="openPage('الفواتير المعلقة','pending.html',this)">
+
+        <span class="icon">🕐</span>
+        <span>الفواتير المعلقة</span>
+
+    </button>
+
+
+    <button class="nav-btn"
+            onclick="openPage('الاستلام والتسليم','delivery.html',this)">
+
+        <span class="icon">🚚</span>
+        <span>الاستلام والتسليم</span>
+
+    </button>
+
+
+    <button class="nav-btn"
+            onclick="openPage('فاتورة بيع','sales.html',this)">
+
+        <span class="icon">🏷️</span>
+        <span>فاتورة بيع</span>
+
+    </button>
+
+
+    <button class="nav-btn"
+            onclick="openPage('الإعدادات','settings.html',this)">
+
+        <span class="icon">⚙️</span>
+        <span>الإعدادات</span>
+
+    </button>
+
+
+    <br>
+
+
+    <button class="nav-btn"
+            onclick="goBack()">
+
+        <span class="icon">🚪</span>
+        <span>خروج</span>
+
+    </button>
+
+</aside>
+
+
+<!-- ================= المحتوى ================= -->
+
+<main class="main">
+
+
+    <!-- الصفحة الرئيسية -->
+
+    <section id="homeContent">
+
+        <div class="welcome">
+
+            <h1>
+                مرحباً بك في Fantasy Store 🎮
+            </h1>
+
+            <p>
+                اختر القسم الذي تريد العمل عليه من القائمة الجانبية
+            </p>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <div class="card"
+                 onclick="openPage('فاتورة جديدة','invoice.html',null)">
+
+                <div class="card-icon">
+                    🧾
+                </div>
+
+                <h2>
+                    فاتورة جديدة
+                </h2>
+
+                <p>
+                    إنشاء فاتورة صيانة جديدة
+                </p>
+
+            </div>
+
+
+            <div class="card"
+                 onclick="openPage('قطع الغيار','spare-parts.html',null)">
+
+                <div class="card-icon">
+                    🔧
+                </div>
+
+                <h2>
+                    قطع الغيار
+                </h2>
+
+                <p>
+                    إدارة قطع غيار PS4 و PS5
+                </p>
+
+            </div>
+
+
+            <div class="card"
+                 onclick="openPage('جدول الأسعار','prices.html',null)">
+
+                <div class="card-icon">
+                    💰
+                </div>
+
+                <h2>
+                    جدول الأسعار
+                </h2>
+
+                <p>
+                    إدارة أسعار الصيانة والخدمات
+                </p>
+
+            </div>
+
+
+            <div class="card"
+                 onclick="openPage('الإعدادات','settings.html',null)">
+
+                <div class="card-icon">
+                    ⚙️
+                </div>
+
+                <h2>
+                    الإعدادات
+                </h2>
+
+                <p>
+                    إعدادات الموقع والحفظ والنسخ الاحتياطي
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- عنوان الصفحة -->
+
+    <section id="pageContent" style="display:none;">
+
+        <button class="back-btn"
+                onclick="showHome()">
+
+            ← العودة للرئيسية
+
+        </button>
+
+
+        <div class="page-head">
+
+            <h1 id="pageTitle">
+                الصفحة
+            </h1>
+
+            <p>
+                Fantasy Store
+            </p>
+
+        </div>
+
+
+        <iframe
+            id="pageFrame"
+            class="page-frame">
+        </iframe>
+
+    </section>
+
+
+</main>
+
+
+<script>
+
+/* ================= عرض الصفحة الرئيسية ================= */
+
+function showHome(button){
+
+    document.getElementById("homeContent").style.display =
+        "block";
+
+    document.getElementById("pageContent").style.display =
+        "none";
+
+
+    document.querySelectorAll(".nav-btn")
+        .forEach(function(btn){
+
+            btn.classList.remove("active");
+
+        });
+
+
+    if(button){
+
+        button.classList.add("active");
+
+    }else{
+
+        document.querySelector(".nav-btn")
+            .classList.add("active");
+
+    }
+
+}
+
+
+/* ================= فتح قسم ================= */
+
+function openPage(title,url,button){
+
+    document.getElementById("homeContent").style.display =
+        "none";
+
+    document.getElementById("pageContent").style.display =
+        "block";
+
+
+    document.getElementById("pageTitle").textContent =
+        title;
+
+
+    document.getElementById("pageFrame").src =
+        url;
+
+
+    document.querySelectorAll(".nav-btn")
+        .forEach(function(btn){
+
+            btn.classList.remove("active");
+
+        });
+
+
+    if(button){
+
+        button.classList.add("active");
+
+    }else{
+
+        document.querySelectorAll(".nav-btn")
+            .forEach(function(btn){
+
+                if(
+                    btn.textContent.trim().includes(title)
+                ){
+
+                    btn.classList.add("active");
+
+                }
+
+            });
+
+    }
+
+}
+
+
+/* ================= زر الخروج ================= */
+
+function goBack(){
+
+    /*
+      مش تسجيل خروج.
+      يرجعك للصفحة الرئيسية فقط.
+    */
+
+    showHome();
+
+}
+
+
+/* ================= تشغيل ================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        showHome();
+
+    }
+);
+
+</script>
 
 </body>
 </html>
