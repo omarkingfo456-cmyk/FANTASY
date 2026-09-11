@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FANTASY STORE</title>
+
+<title>First - Fantasy Store</title>
 
 <style>
 *{
@@ -14,20 +15,21 @@
 }
 
 body{
-    background:#060b14;
-    color:white;
+    background:#071126;
+    color:#fff;
     min-height:100vh;
 }
 
-/* الشريط العلوي */
+/* ================= الشريط العلوي ================= */
+
 .topbar{
     height:70px;
-    background:#0b1320;
-    border-bottom:1px solid #1d3955;
+    background:#0b1733;
+    border-bottom:1px solid #1d3157;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 25px;
+    padding:0 22px;
     position:fixed;
     top:0;
     left:0;
@@ -35,96 +37,186 @@ body{
     z-index:1000;
 }
 
-.logo{
-    color:#ffc400;
-    font-size:24px;
+.brand{
+    font-size:22px;
     font-weight:bold;
+    color:#fff;
 }
 
-.status{
-    color:#39d98a;
-    font-size:14px;
+.brand span{
+    color:#8998ad;
+    font-size:15px;
 }
 
-/* القائمة */
-.sidebar{
-    position:fixed;
-    right:0;
-    top:70px;
-    bottom:0;
-    width:260px;
-    background:#09121e;
-    border-left:1px solid #1d3955;
-    padding:18px 12px;
-    overflow-y:auto;
-}
-
-.menu-title{
-    color:#74879b;
-    font-size:13px;
-    padding:5px 12px 15px;
-}
-
-.nav-btn{
-    width:100%;
-    background:transparent;
-    border:1px solid transparent;
-    color:#dce4ed;
-    padding:13px 15px;
-    margin-bottom:6px;
-    border-radius:9px;
-    cursor:pointer;
+.top-left{
     display:flex;
     align-items:center;
-    gap:12px;
-    font-size:15px;
-    text-align:right;
+    gap:10px;
 }
 
-.nav-btn:hover{
-    background:#122235;
-    color:#ffc400;
-    border-color:#254766;
+.user{
+    background:#13284a;
+    border:1px solid #24446d;
+    border-radius:25px;
+    padding:8px 15px;
+    color:#d9e2ef;
 }
 
-.nav-btn.active{
-    background:#ffc400;
-    color:#111;
-    font-weight:bold;
-}
-
-.icon{
-    width:25px;
-    text-align:center;
+.theme{
+    width:45px;
+    height:40px;
+    border:1px solid #24446d;
+    background:#10213f;
+    border-radius:9px;
+    color:#fff;
+    cursor:pointer;
     font-size:18px;
 }
 
-/* المحتوى */
+.connection{
+    background:#10213f;
+    border:1px solid #24446d;
+    border-radius:25px;
+    padding:9px 15px;
+    color:#9ba9bb;
+}
+
+.green{
+    color:#36df91;
+}
+
+/* ================= القائمة الجانبية ================= */
+
+.sidebar{
+    position:fixed;
+    top:70px;
+    right:0;
+    bottom:0;
+
+    width:285px;
+
+    background:#08132a;
+    border-left:1px solid #1b3156;
+
+    padding:15px;
+
+    overflow-y:auto;
+
+    z-index:900;
+}
+
+.menu{
+    background:#0c1935;
+    border:1px solid #1b3156;
+    border-radius:20px;
+    padding:10px;
+}
+
+.menu button{
+    width:100%;
+    border:0;
+    background:transparent;
+    color:#aebbd0;
+
+    padding:15px 14px;
+
+    margin-bottom:3px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    text-align:right;
+
+    font-size:15px;
+
+    transition:.2s;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.menu button:hover{
+    background:#122b50;
+    color:#fff;
+}
+
+.menu button.active{
+    background:linear-gradient(
+        90deg,
+        #205bbd,
+        #2866c7
+    );
+
+    color:#fff;
+
+    box-shadow:
+        0 5px 18px rgba(25,90,190,.3);
+}
+
+.menu-icon{
+    width:25px;
+    text-align:center;
+    font-size:17px;
+}
+
+/* ================= المحتوى ================= */
+
 .main{
-    margin-right:260px;
+    margin-right:285px;
     padding:95px 25px 30px;
     min-height:100vh;
 }
 
+/* ================= الصفحات ================= */
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.page-title{
+    background:#0b1936;
+    border:1px solid #20406d;
+    border-radius:16px;
+    padding:25px;
+    margin-bottom:20px;
+}
+
+.page-title h1{
+    color:#ffbd00;
+    font-size:27px;
+    margin-bottom:8px;
+}
+
+.page-title p{
+    color:#8192a9;
+}
+
+/* ================= الرئيسية ================= */
+
 .welcome{
-    background:linear-gradient(135deg,#0d1b2b,#09121d);
-    border:1px solid #204564;
-    border-radius:17px;
-    padding:35px;
-    margin-bottom:25px;
+    background:#0b1936;
+    border:1px solid #20406d;
+    border-radius:16px;
+    padding:30px;
+    margin-bottom:20px;
 }
 
 .welcome h1{
-    color:#ffc400;
-    font-size:30px;
+    color:#ffbd00;
+    font-size:29px;
     margin-bottom:10px;
 }
 
 .welcome p{
-    color:#8497ab;
+    color:#8394aa;
 }
 
-/* الكروت */
 .cards{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -132,114 +224,175 @@ body{
 }
 
 .card{
-    background:#0c1723;
-    border:1px solid #1e3a54;
-    border-radius:15px;
+    background:#0b1936;
+    border:1px solid #20406d;
+    border-radius:16px;
     padding:25px;
+    min-height:145px;
     cursor:pointer;
-    min-height:150px;
     transition:.2s;
 }
 
 .card:hover{
-    border-color:#ffc400;
-    transform:translateY(-3px);
+    border-color:#2f74d8;
+    transform:translateY(-2px);
 }
 
-.card-icon{
-    font-size:40px;
-    margin-bottom:14px;
+.card .big-icon{
+    font-size:38px;
+    margin-bottom:12px;
 }
 
 .card h2{
     font-size:19px;
-    margin-bottom:8px;
+    margin-bottom:7px;
 }
 
 .card p{
-    color:#778a9e;
+    color:#8293a9;
     font-size:13px;
 }
 
-/* شاشة القسم */
-#sectionPage{
-    display:none;
-}
+/* ================= الكروت الداخلية ================= */
 
-.section-head{
-    background:#0c1723;
-    border:1px solid #1e3a54;
-    border-radius:15px;
+.box{
+    background:#0b1936;
+    border:1px solid #20406d;
+    border-radius:16px;
     padding:22px;
     margin-bottom:18px;
 }
 
-.section-head h1{
-    color:#ffc400;
-    margin-bottom:7px;
-}
-
-.section-head p{
-    color:#8194a8;
-}
-
-.back{
-    background:#17283a;
-    border:1px solid #29445e;
-    color:white;
-    padding:10px 18px;
-    border-radius:8px;
-    cursor:pointer;
+.box h2{
+    color:#fff;
     margin-bottom:18px;
 }
 
-.frame{
-    width:100%;
-    height:calc(100vh - 230px);
-    border:1px solid #1e3a54;
-    border-radius:15px;
-    background:#060b14;
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
 }
 
-/* موبايل */
+.field label{
+    display:block;
+    color:#aebbd0;
+    margin-bottom:7px;
+    font-size:14px;
+}
+
+.field input,
+.field select,
+.field textarea{
+    width:100%;
+    background:#07142c;
+    color:#fff;
+    border:1px solid #27476e;
+    border-radius:9px;
+    padding:12px;
+    outline:none;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+    border-color:#2e73d5;
+}
+
+.save{
+    margin-top:18px;
+    background:#2366c7;
+    color:#fff;
+    border:0;
+    border-radius:9px;
+    padding:12px 22px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.save:hover{
+    background:#2c78e7;
+}
+
+/* ================= جدول ================= */
+
+.table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.table th{
+    color:#ffbd00;
+    background:#102142;
+    padding:13px;
+}
+
+.table td{
+    padding:13px;
+    border-bottom:1px solid #1b3156;
+    text-align:center;
+    color:#d2dbe7;
+}
+
+/* ================= زر الخروج ================= */
+
+.exit{
+    margin-top:12px !important;
+    color:#ff7777 !important;
+}
+
+.exit:hover{
+    background:#321c27 !important;
+}
+
+/* ================= الموبايل ================= */
+
 @media(max-width:800px){
 
     .topbar{
-        padding:0 12px;
+        padding:0 10px;
     }
 
-    .logo{
-        font-size:18px;
+    .brand{
+        font-size:17px;
     }
 
-    .status{
+    .connection{
         display:none;
     }
 
     .sidebar{
-        width:72px;
-        padding:15px 7px;
+        width:75px;
+        padding:10px 7px;
     }
 
-    .menu-title{
-        display:none;
+    .menu{
+        padding:5px;
     }
 
-    .nav-btn{
+    .menu button{
         justify-content:center;
-        padding:13px 4px;
+        padding:13px 5px;
     }
 
-    .nav-btn span:not(.icon){
+    .menu button .text{
         display:none;
+    }
+
+    .menu-icon{
+        font-size:20px;
     }
 
     .main{
-        margin-right:72px;
+        margin-right:75px;
         padding:85px 10px 20px;
     }
 
     .cards{
+        grid-template-columns:1fr;
+    }
+
+    .form-grid{
         grid-template-columns:1fr;
     }
 }
@@ -248,238 +401,837 @@ body{
 
 <body>
 
-<!-- الشريط العلوي -->
+<!-- ================= الشريط العلوي ================= -->
+
 <header class="topbar">
 
-    <div class="logo">
-        🎮 FANTASY STORE
+    <div class="brand">
+        First <span>— Fantasy Store</span>
     </div>
 
-    <div class="status">
-        ● متصل بالسحابة
+    <div class="top-left">
+
+        <div class="connection">
+            <span class="green">●</span>
+            متصل بالسحابة (مباشر)
+        </div>
+
+        <button class="theme" onclick="toggleTheme()">
+            ☀️
+        </button>
+
+        <div class="user">
+            عبدالله
+        </div>
+
     </div>
 
 </header>
 
 
-<!-- القائمة الجانبية -->
+<!-- ================= القائمة ================= -->
+
 <aside class="sidebar">
 
-    <div class="menu-title">
-        لوحة التحكم
+    <div class="menu">
+
+        <button class="active" onclick="showPage('home',this)">
+            <span class="menu-icon">🏠</span>
+            <span class="text">الرئيسية</span>
+        </button>
+
+
+        <button onclick="showPage('newInvoice',this)">
+            <span class="menu-icon">📄</span>
+            <span class="text">فاتورة جديدة</span>
+        </button>
+
+
+        <button onclick="showPage('editInvoice',this)">
+            <span class="menu-icon">✏️</span>
+            <span class="text">تعديل فاتورة</span>
+        </button>
+
+
+        <button onclick="showPage('prices',this)">
+            <span class="menu-icon">💳</span>
+            <span class="text">جدول أسعار</span>
+        </button>
+
+
+        <button onclick="showPage('parts',this)">
+            <span class="menu-icon">📦</span>
+            <span class="text">قطع الغيار</span>
+        </button>
+
+
+        <button onclick="showPage('invoices',this)">
+            <span class="menu-icon">📚</span>
+            <span class="text">سجل الفواتير</span>
+        </button>
+
+
+        <button onclick="showPage('pending',this)">
+            <span class="menu-icon">⌛</span>
+            <span class="text">الفواتير المعلقة</span>
+        </button>
+
+
+        <button onclick="showPage('delivery',this)">
+            <span class="menu-icon">🔄</span>
+            <span class="text">الاستلام والتسليم</span>
+        </button>
+
+
+        <button onclick="showPage('sales',this)">
+            <span class="menu-icon">🛒</span>
+            <span class="text">فاتورة بيع</span>
+        </button>
+
+
+        <button onclick="showPage('settings',this)">
+            <span class="menu-icon">⚙️</span>
+            <span class="text">الإعدادات</span>
+        </button>
+
+
+        <button class="exit" onclick="goHome()">
+            <span class="menu-icon">🚪</span>
+            <span class="text">خروج</span>
+        </button>
+
     </div>
-
-    <button class="nav-btn active" onclick="home(this)">
-        <span class="icon">🏠</span>
-        <span>الرئيسية</span>
-    </button>
-
-    <button class="nav-btn" onclick="openSection('فاتورة جديدة','invoice.html',this)">
-        <span class="icon">🧾</span>
-        <span>فاتورة جديدة</span>
-    </button>
-
-    <button class="nav-btn" onclick="openSection('تعديل فاتورة','edit-invoice.html',this)">
-        <span class="icon">✏️</span>
-        <span>تعديل فاتورة</span>
-    </button>
-
-    <button class="nav-btn" onclick="openSection('جدول الأسعار','prices.html',this)">
-        <span class="icon">💰</span>
-        <span>جدول الأسعار</span>
-    </button>
-
-    <button class="nav-btn" onclick="openSection('قطع الغيار','spare-parts.html',this)">
-        <span class="icon">🔧</span>
-        <span>قطع الغيار</span>
-    </button>
-
-    <button class="nav-btn" onclick="openSection('سجل الفواتير','invoices.html',this)">
-        <span class="icon">📋</span>
-        <span>سجل الفواتير</span>
-    </button>
-
-    <button class="nav-btn" onclick="openSection('الفواتير المعلقة','pending.html',this)">
-        <span class="icon">🕐</span>
-        <span>الفواتير المعلقة</span>
-    </button>
-
-    <button class="nav-btn" onclick="openSection('الاستلام والتسليم','delivery.html',this)">
-        <span class="icon">🚚</span>
-        <span>الاستلام والتسليم</span>
-    </button>
-
-    <button class="nav-btn" onclick="openSection('فاتورة بيع','sales.html',this)">
-        <span class="icon">🏷️</span>
-        <span>فاتورة بيع</span>
-    </button>
-
-    <button class="nav-btn" onclick="openSection('الإعدادات','settings.html',this)">
-        <span class="icon">⚙️</span>
-        <span>الإعدادات</span>
-    </button>
-
-    <button class="nav-btn" onclick="goBack()">
-        <span class="icon">🚪</span>
-        <span>خروج</span>
-    </button>
 
 </aside>
 
 
-<!-- المحتوى -->
+<!-- ================= المحتوى ================= -->
+
 <main class="main">
 
-    <!-- الرئيسية -->
-    <section id="homePage">
 
-        <div class="welcome">
+<!-- الرئيسية -->
 
-            <h1>
-                مرحباً بك في FANTASY STORE 🎮
-            </h1>
+<section id="home" class="page active">
 
-            <p>
-                اختر القسم الذي تريد العمل عليه من القائمة الجانبية
-            </p>
+    <div class="welcome">
+
+        <h1>
+            صيانة دراعات
+        </h1>
+
+        <p>
+            مرحباً بك في نظام إدارة Fantasy Store
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card"
+             onclick="showPageById('newInvoice')">
+
+            <div class="big-icon">📄</div>
+
+            <h2>فاتورة جديدة</h2>
+
+            <p>إنشاء فاتورة صيانة جديدة</p>
+
+        </div>
+
+
+        <div class="card"
+             onclick="showPageById('parts')">
+
+            <div class="big-icon">📦</div>
+
+            <h2>قطع الغيار</h2>
+
+            <p>إدارة قطع الغيار</p>
 
         </div>
 
 
-        <div class="cards">
+        <div class="card"
+             onclick="showPageById('prices')">
 
-            <div class="card"
-                 onclick="openSection('فاتورة جديدة','invoice.html')">
+            <div class="big-icon">💳</div>
 
-                <div class="card-icon">🧾</div>
+            <h2>جدول أسعار</h2>
 
-                <h2>فاتورة جديدة</h2>
+            <p>إدارة أسعار الصيانة</p>
 
-                <p>إنشاء فاتورة صيانة جديدة</p>
+        </div>
 
+
+        <div class="card"
+             onclick="showPageById('settings')">
+
+            <div class="big-icon">⚙️</div>
+
+            <h2>الإعدادات</h2>
+
+            <p>إعدادات النظام والحفظ</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- فاتورة جديدة -->
+
+<section id="newInvoice" class="page">
+
+    <div class="page-title">
+
+        <h1>فاتورة جديدة</h1>
+
+        <p>إنشاء فاتورة صيانة جديدة</p>
+
+    </div>
+
+
+    <div class="box">
+
+        <h2>بيانات العميل</h2>
+
+        <div class="form-grid">
+
+            <div class="field">
+                <label>اسم العميل</label>
+                <input id="customerName" type="text">
             </div>
 
-
-            <div class="card"
-                 onclick="openSection('قطع الغيار','spare-parts.html')">
-
-                <div class="card-icon">🔧</div>
-
-                <h2>قطع الغيار</h2>
-
-                <p>إدارة قطع غيار PS4 و PS5</p>
-
+            <div class="field">
+                <label>رقم الهاتف</label>
+                <input id="customerPhone" type="tel">
             </div>
 
-
-            <div class="card"
-                 onclick="openSection('جدول الأسعار','prices.html')">
-
-                <div class="card-icon">💰</div>
-
-                <h2>جدول الأسعار</h2>
-
-                <p>إدارة أسعار الصيانة</p>
-
+            <div class="field">
+                <label>عدد دراعات PS5</label>
+                <input type="number" value="0" min="0">
             </div>
 
-
-            <div class="card"
-                 onclick="openSection('الإعدادات','settings.html')">
-
-                <div class="card-icon">⚙️</div>
-
-                <h2>الإعدادات</h2>
-
-                <p>إعدادات الموقع والحفظ والنسخ الاحتياطي</p>
-
+            <div class="field">
+                <label>عدد دراعات PS4</label>
+                <input type="number" value="0" min="0">
             </div>
 
         </div>
 
-    </section>
-
-
-    <!-- القسم المختار -->
-    <section id="sectionPage">
-
-        <button class="back" onclick="home()">
-            ← الرئيسية
+        <button class="save" onclick="saveInvoice()">
+            💾 حفظ الفاتورة
         </button>
 
-        <div class="section-head">
+    </div>
 
-            <h1 id="sectionTitle">
-                القسم
-            </h1>
+</section>
 
-            <p>
-                FANTASY STORE
-            </p>
+
+<!-- تعديل فاتورة -->
+
+<section id="editInvoice" class="page">
+
+    <div class="page-title">
+
+        <h1>تعديل فاتورة</h1>
+
+        <p>تعديل بيانات الفواتير</p>
+
+    </div>
+
+    <div class="box">
+
+        <h2>البحث عن فاتورة</h2>
+
+        <div class="field">
+
+            <label>كود الفاتورة</label>
+
+            <input type="text" placeholder="اكتب كود الفاتورة">
 
         </div>
 
-        <iframe
-            id="contentFrame"
-            class="frame">
-        </iframe>
+        <button class="save">
+            🔎 بحث
+        </button>
 
-    </section>
+    </div>
+
+</section>
+
+
+<!-- جدول الأسعار -->
+
+<section id="prices" class="page">
+
+    <div class="page-title">
+
+        <h1>جدول أسعار</h1>
+
+        <p>أسعار خدمات الصيانة</p>
+
+    </div>
+
+    <div class="box">
+
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <th>الخدمة</th>
+                    <th>السعر القطاعي</th>
+                    <th>السعر التجاري</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>صيانة دراع PS4</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+
+                <tr>
+                    <td>صيانة دراع PS5</td>
+                    <td>—</td>
+                    <td>—</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- قطع الغيار -->
+
+<section id="parts" class="page">
+
+    <div class="page-title">
+
+        <h1>قطع الغيار</h1>
+
+        <p>إدارة قطع الغيار الخاصة بدراعات فور وفايف</p>
+
+    </div>
+
+
+    <div class="box">
+
+        <h2>فور (PS4)</h2>
+
+        <button class="save" onclick="addPart('PS4')">
+            ➕ إضافة قطعة
+        </button>
+
+        <table class="table">
+
+            <thead>
+
+                <tr>
+                    <th>القطعة</th>
+                    <th>النوع</th>
+                    <th>قطاعي</th>
+                    <th>تجاري</th>
+                    <th>العدد</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="ps4Parts">
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <div class="box">
+
+        <h2>فايف (PS5)</h2>
+
+        <button class="save" onclick="addPart('PS5')">
+            ➕ إضافة قطعة
+        </button>
+
+        <table class="table">
+
+            <thead>
+
+                <tr>
+                    <th>القطعة</th>
+                    <th>النوع</th>
+                    <th>قطاعي</th>
+                    <th>تجاري</th>
+                    <th>العدد</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="ps5Parts">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- سجل الفواتير -->
+
+<section id="invoices" class="page">
+
+    <div class="page-title">
+
+        <h1>سجل الفواتير</h1>
+
+        <p>عرض الفواتير المحفوظة</p>
+
+    </div>
+
+    <div class="box">
+
+        <p style="color:#8495aa">
+            لا توجد فواتير حالياً
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- الفواتير المعلقة -->
+
+<section id="pending" class="page">
+
+    <div class="page-title">
+
+        <h1>الفواتير المعلقة</h1>
+
+        <p>الفواتير التي لم يتم استلامها أو تسليمها</p>
+
+    </div>
+
+    <div class="box">
+
+        <p style="color:#8495aa">
+            لا توجد فواتير معلقة حالياً
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- الاستلام والتسليم -->
+
+<section id="delivery" class="page">
+
+    <div class="page-title">
+
+        <h1>الاستلام والتسليم</h1>
+
+        <p>متابعة الأجهزة والاستلام والتسليم</p>
+
+    </div>
+
+    <div class="box">
+
+        <p style="color:#8495aa">
+            لا توجد عمليات حالياً
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- فاتورة بيع -->
+
+<section id="sales" class="page">
+
+    <div class="page-title">
+
+        <h1>فاتورة بيع</h1>
+
+        <p>إنشاء فاتورة بيع جديدة</p>
+
+    </div>
+
+    <div class="box">
+
+        <div class="form-grid">
+
+            <div class="field">
+                <label>اسم العميل</label>
+                <input type="text">
+            </div>
+
+            <div class="field">
+                <label>المنتج</label>
+                <input type="text">
+            </div>
+
+            <div class="field">
+                <label>السعر</label>
+                <input type="number">
+            </div>
+
+            <div class="field">
+                <label>الكمية</label>
+                <input type="number" value="1">
+            </div>
+
+        </div>
+
+        <button class="save">
+            💾 حفظ الفاتورة
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- الإعدادات -->
+
+<section id="settings" class="page">
+
+    <div class="page-title">
+
+        <h1>الإعدادات</h1>
+
+        <p>تحكم في نصوص رسائل واتساب والحفظ السحابي والنسخ الاحتياطي</p>
+
+    </div>
+
+
+    <div class="box">
+
+        <h2>حفظ البيانات</h2>
+
+        <p style="color:#8394aa">
+            البيانات يتم حفظها داخل المتصفح تلقائياً.
+        </p>
+
+        <button class="save" onclick="saveSettings()">
+            💾 حفظ الآن
+        </button>
+
+    </div>
+
+
+    <div class="box">
+
+        <h2>رسالة واتساب</h2>
+
+        <div class="field">
+
+            <label>نص الرسالة</label>
+
+            <textarea id="whatsappText" rows="6"></textarea>
+
+        </div>
+
+        <button class="save" onclick="saveSettings()">
+            💾 حفظ القوالب
+        </button>
+
+    </div>
+
+</section>
 
 </main>
 
 
 <script>
 
-/* إظهار الرئيسية */
+/* ================= التنقل بين الصفحات ================= */
 
-function home(button){
+function showPage(id,button){
 
-    document.getElementById("homePage").style.display = "block";
-    document.getElementById("sectionPage").style.display = "none";
+    document.querySelectorAll(".page").forEach(function(page){
+        page.classList.remove("active");
+    });
 
-    document.querySelectorAll(".nav-btn").forEach(function(btn){
+    const page = document.getElementById(id);
+
+    if(page){
+        page.classList.add("active");
+    }
+
+    document.querySelectorAll(".menu button").forEach(function(btn){
         btn.classList.remove("active");
     });
 
     if(button){
         button.classList.add("active");
+    }
+
+}
+
+
+/* فتح الصفحة من الكروت */
+
+function showPageById(id){
+
+    showPage(id,null);
+
+    document.querySelectorAll(".menu button").forEach(function(btn){
+
+        if(btn.innerText.includes(
+            document.getElementById(id).querySelector("h1")?.innerText
+        )){
+            btn.classList.add("active");
+        }
+
+    });
+
+}
+
+
+/* الخروج = الرجوع للرئيسية */
+
+function goHome(){
+
+    showPage("home");
+
+    document.querySelector(".menu button").classList.add("active");
+
+}
+
+
+/* الوضع */
+
+function toggleTheme(){
+
+    const body = document.body;
+
+    if(body.dataset.theme === "light"){
+
+        body.dataset.theme = "dark";
+
+        body.style.background = "#071126";
+
     }else{
-        document.querySelector(".nav-btn").classList.add("active");
+
+        body.dataset.theme = "light";
+
+        body.style.background = "#111827";
+
     }
+
 }
 
 
-/* فتح أي قسم */
+/* حفظ الإعدادات */
 
-function openSection(title,url,button){
+function saveSettings(){
 
-    document.getElementById("homePage").style.display = "none";
-    document.getElementById("sectionPage").style.display = "block";
+    const text =
+        document.getElementById("whatsappText").value;
 
-    document.getElementById("sectionTitle").textContent = title;
+    localStorage.setItem(
+        "fantasySettings",
+        JSON.stringify({
+            whatsapp:text
+        })
+    );
 
-    document.getElementById("contentFrame").src = url;
+    alert("تم حفظ الإعدادات بنجاح ✅");
 
-    document.querySelectorAll(".nav-btn").forEach(function(btn){
-        btn.classList.remove("active");
+}
+
+
+/* تحميل الإعدادات */
+
+function loadSettings(){
+
+    try{
+
+        const data =
+            JSON.parse(
+                localStorage.getItem("fantasySettings")
+            );
+
+        if(data && data.whatsapp){
+
+            document.getElementById("whatsappText").value =
+                data.whatsapp;
+
+        }
+
+    }catch(e){}
+
+}
+
+
+/* حفظ الفاتورة */
+
+function saveInvoice(){
+
+    const name =
+        document.getElementById("customerName").value;
+
+    const phone =
+        document.getElementById("customerPhone").value;
+
+    if(!name){
+
+        alert("اكتب اسم العميل أولاً");
+
+        return;
+
+    }
+
+    const invoices =
+        JSON.parse(
+            localStorage.getItem("fantasyInvoices") || "[]"
+        );
+
+    invoices.push({
+
+        id:Date.now(),
+
+        customer:name,
+
+        phone:phone,
+
+        date:new Date().toLocaleDateString("ar-EG")
+
     });
 
-    if(button){
-        button.classList.add("active");
+    localStorage.setItem(
+        "fantasyInvoices",
+        JSON.stringify(invoices)
+    );
+
+    alert("تم حفظ الفاتورة ✅");
+
+}
+
+
+/* قطع الغيار */
+
+function addPart(consoleType){
+
+    const name =
+        prompt("اسم القطعة:");
+
+    if(!name){
+        return;
     }
+
+    const retail =
+        prompt("السعر القطاعي:");
+
+    const commercial =
+        prompt("السعر التجاري:");
+
+    const quantity =
+        prompt("الكمية:");
+
+    const type =
+        prompt(
+            "نوع القطعة:\n1 - مفردة\n2 - مزدوجة"
+        );
+
+    const finalType =
+        type === "2"
+        ? "مزدوجة"
+        : "مفردة";
+
+
+    const parts =
+        JSON.parse(
+            localStorage.getItem("fantasyParts") || "[]"
+        );
+
+
+    parts.push({
+
+        id:Date.now(),
+
+        console:consoleType,
+
+        name:name,
+
+        retail:retail || 0,
+
+        commercial:commercial || 0,
+
+        quantity:quantity || 0,
+
+        type:finalType
+
+    });
+
+
+    localStorage.setItem(
+        "fantasyParts",
+        JSON.stringify(parts)
+    );
+
+
+    renderParts();
+
 }
 
 
-/* خروج = رجوع للرئيسية فقط */
+/* عرض قطع الغيار */
 
-function goBack(){
+function renderParts(){
 
-    home();
+    const parts =
+        JSON.parse(
+            localStorage.getItem("fantasyParts") || "[]"
+        );
+
+
+    document.getElementById("ps4Parts").innerHTML="";
+    document.getElementById("ps5Parts").innerHTML="";
+
+
+    parts.forEach(function(part){
+
+        const row = `
+            <tr>
+                <td>${part.name}</td>
+                <td>${part.type}</td>
+                <td>${part.retail} ج.م</td>
+                <td>${part.commercial} ج.م</td>
+                <td>${part.quantity}</td>
+            </tr>
+        `;
+
+
+        if(part.console === "PS4"){
+
+            document.getElementById("ps4Parts")
+                .innerHTML += row;
+
+        }else{
+
+            document.getElementById("ps5Parts")
+                .innerHTML += row;
+
+        }
+
+    });
 
 }
 
-</script>
 
-</body>
-</html>
+/* تشغيل */
+
+document.addEventListener(
+    "DO
