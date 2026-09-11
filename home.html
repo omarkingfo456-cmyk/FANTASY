@@ -31,7 +31,7 @@ body{
 
 body.light{
     --bg:#edf2f8;
-    --box:#ffffff;
+    --box:#fff;
     --box2:#f4f7fb;
     --border:#ccd6e5;
     --text:#16233b;
@@ -162,34 +162,6 @@ body.light .sidebar{
     margin-bottom:25px;
 }
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
-}
-
-.card{
-    background:var(--box);
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:25px;
-}
-
-.big{
-    text-align:center;
-    cursor:pointer;
-    padding:45px 20px;
-}
-
-.big .icon{
-    font-size:55px;
-    margin-bottom:15px;
-}
-
-.big h2{
-    margin:0;
-}
-
 .type-buttons{
     display:flex;
     gap:10px;
@@ -269,6 +241,34 @@ textarea{
     background:#742741;
 }
 
+.cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.card{
+    background:var(--box);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:25px;
+}
+
+.big{
+    text-align:center;
+    cursor:pointer;
+    padding:45px 20px;
+}
+
+.big .icon{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.big h2{
+    margin:0;
+}
+
 .parts{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -287,7 +287,6 @@ textarea{
     justify-content:space-between;
     align-items:center;
     margin-bottom:15px;
-    gap:10px;
 }
 
 .part-head h2{
@@ -348,8 +347,7 @@ textarea{
 }
 
 hr{
-    border:0;
-    border-top:1px solid var(--border);
+    border-color:var(--border);
 }
 
 @media(max-width:900px){
@@ -363,7 +361,6 @@ hr{
 }
 
 @media(max-width:650px){
-
     .top{
         height:auto;
         padding:15px;
@@ -426,7 +423,7 @@ hr{
             <span class="green">● مباشر</span>
         </div>
 
-        <button id="lightButton" onclick="toggleLight()">
+        <button id="lightButton" type="button">
             ☀️
         </button>
 
@@ -434,62 +431,59 @@ hr{
 
 </header>
 
-
 <div class="layout">
 
 <aside class="sidebar">
 
 <div class="menu">
 
-<button onclick="showPage('newInvoice',this)">
+<button type="button" onclick="showPage('newInvoice',this)">
 🧾 <span>فاتورة جديدة</span>
 </button>
 
-<button onclick="showPage('editInvoice',this)">
+<button type="button" onclick="showPage('editInvoice',this)">
 ✏️ <span>تعديل فاتورة</span>
 </button>
 
-<button onclick="showPage('prices',this)">
+<button type="button" onclick="showPage('prices',this)">
 💳 <span>جدول أسعار</span>
 </button>
 
-<button onclick="showPage('parts',this)">
+<button type="button" onclick="showPage('parts',this)">
 📦 <span>قطع الغيار</span>
 </button>
 
-<button onclick="showPage('history',this)">
+<button type="button" onclick="showPage('history',this)">
 📚 <span>سجل الفواتير</span>
 </button>
 
-<button onclick="showPage('pending',this)">
+<button type="button" onclick="showPage('pending',this)">
 ⌛ <span>الفواتير المعلقة</span>
 </button>
 
-<button onclick="showPage('delivery',this)">
+<button type="button" onclick="showPage('delivery',this)">
 🔄 <span>الاستلام والتسليم</span>
 </button>
 
-<button onclick="showPage('sales',this)">
+<button type="button" onclick="showPage('sales',this)">
 🛒 <span>فاتورة بيع</span>
 </button>
 
-<button onclick="showPage('settings',this)">
+<button type="button" onclick="showPage('settings',this)">
 ⚙️ <span>الإعدادات</span>
 </button>
 
-<button onclick="showPage('home',this)">
+<button type="button" onclick="showPage('home',this)">
 ↩️ <span>خروج</span>
 </button>
 
 </div>
-</aside>
 
+</aside>
 
 <main class="content">
 
-
 <!-- الرئيسية -->
-
 <section id="home" class="page active">
 
 <div class="panel">
@@ -515,11 +509,10 @@ hr{
 </div>
 
 </div>
+
 </section>
 
-
 <!-- فاتورة جديدة -->
-
 <section id="newInvoice" class="page">
 
 <div class="panel">
@@ -532,13 +525,12 @@ hr{
 
 <div class="type-buttons">
 
-<button id="retailBtn"
-class="selected"
+<button id="retailBtn" class="selected" type="button"
 onclick="setInvoiceType('قطاعي')">
 قطاعي
 </button>
 
-<button id="commercialBtn"
+<button id="commercialBtn" type="button"
 onclick="setInvoiceType('تجاري')">
 تجاري
 </button>
@@ -563,7 +555,7 @@ onclick="setInvoiceType('تجاري')">
 </div>
 
 <div>
-<label>رقم الهاتف</label>
+<label>رقم الهاتف (اختياري)</label>
 <input id="customerPhone" placeholder="01xxxxxxxxx">
 </div>
 
@@ -587,38 +579,36 @@ placeholder="اكتب ملاحظات الصيانة هنا..."></textarea>
 
 <div class="actions">
 
-<button class="btn dark" onclick="printInvoice()">
+<button class="btn dark" type="button" onclick="printInvoice()">
 🖨️ طباعة ونسخة استلام
 </button>
 
-<button class="btn" onclick="saveInvoice()">
+<button class="btn" type="button" onclick="saveInvoice()">
 💾 حفظ بيانات الفاتورة
 </button>
 
 </div>
 
 </div>
+
 </section>
 
-
 <!-- تعديل فاتورة -->
-
 <section id="editInvoice" class="page">
 
 <div class="panel">
 
 <h1 class="title">✏️ تعديل فاتورة</h1>
 
-<p class="subtitle">اختر الفاتورة التي تريد تعديلها</p>
+<p class="subtitle">الفواتير المحفوظة</p>
 
 <div id="editList"></div>
 
 </div>
+
 </section>
 
-
-<!-- الأسعار -->
-
+<!-- جدول أسعار -->
 <section id="prices" class="page">
 
 <div class="panel">
@@ -648,7 +638,7 @@ placeholder="اكتب ملاحظات الصيانة هنا..."></textarea>
 
 <br>
 
-<button class="btn" onclick="savePrice()">
+<button class="btn" type="button" onclick="savePrice()">
 💾 حفظ السعر
 </button>
 
@@ -657,11 +647,10 @@ placeholder="اكتب ملاحظات الصيانة هنا..."></textarea>
 <div id="priceList"></div>
 
 </div>
+
 </section>
 
-
 <!-- قطع الغيار -->
-
 <section id="parts" class="page">
 
 <div class="panel">
@@ -674,19 +663,14 @@ placeholder="اكتب ملاحظات الصيانة هنا..."></textarea>
 
 <div class="parts">
 
-
-<!-- PS4 -->
-
 <div class="part-box">
 
 <div class="part-head">
-
 <h2>فور (PS4)</h2>
 
-<button class="btn" onclick="openPart('PS4')">
+<button class="btn" type="button" onclick="openPart('PS4')">
 + إضافة قطعة
 </button>
-
 </div>
 
 <div class="part head">
@@ -702,19 +686,14 @@ placeholder="اكتب ملاحظات الصيانة هنا..."></textarea>
 
 </div>
 
-
-<!-- PS5 -->
-
 <div class="part-box">
 
 <div class="part-head">
-
 <h2>فايف (PS5)</h2>
 
-<button class="btn" onclick="openPart('PS5')">
+<button class="btn" type="button" onclick="openPart('PS5')">
 + إضافة قطعة
 </button>
-
 </div>
 
 <div class="part head">
@@ -733,11 +712,10 @@ placeholder="اكتب ملاحظات الصيانة هنا..."></textarea>
 </div>
 
 </div>
+
 </section>
 
-
 <!-- سجل الفواتير -->
-
 <section id="history" class="page">
 
 <div class="panel">
@@ -749,11 +727,10 @@ placeholder="اكتب ملاحظات الصيانة هنا..."></textarea>
 <div id="historyList"></div>
 
 </div>
+
 </section>
 
-
 <!-- المعلقة -->
-
 <section id="pending" class="page">
 
 <div class="panel">
@@ -765,11 +742,10 @@ placeholder="اكتب ملاحظات الصيانة هنا..."></textarea>
 <div id="pendingList"></div>
 
 </div>
+
 </section>
 
-
-<!-- الاستلام -->
-
+<!-- الاستلام والتسليم -->
 <section id="delivery" class="page">
 
 <div class="panel">
@@ -804,18 +780,17 @@ placeholder="اكتب ملاحظات الصيانة هنا..."></textarea>
 
 <br>
 
-<button class="btn" onclick="saveDelivery()">
+<button class="btn" type="button" onclick="saveDelivery()">
 💾 حفظ
 </button>
 
 <div id="deliveryList"></div>
 
 </div>
+
 </section>
 
-
 <!-- فاتورة بيع -->
-
 <section id="sales" class="page">
 
 <div class="panel">
@@ -845,18 +820,17 @@ placeholder="اكتب ملاحظات الصيانة هنا..."></textarea>
 
 <br>
 
-<button class="btn" onclick="saveSale()">
+<button class="btn" type="button" onclick="saveSale()">
 💾 حفظ فاتورة البيع
 </button>
 
 <div id="salesList"></div>
 
 </div>
+
 </section>
 
-
 <!-- الإعدادات -->
-
 <section id="settings" class="page">
 
 <div class="panel">
@@ -888,36 +862,25 @@ placeholder="اكتب ملاحظات الصيانة هنا..."></textarea>
 
 <br>
 
-<button class="btn" onclick="saveSettings()">
+<button class="btn" type="button" onclick="saveSettings()">
 💾 حفظ الآن
 </button>
 
-<button class="btn dark" onclick="backup()">
+<button class="btn dark" type="button" onclick="backup()">
 ⬇️ نسخة احتياطية
 </button>
 
 </div>
+
 </section>
 
 </main>
 </div>
 
-
 <!-- نافذة قطع الغيار -->
+<div id="partModal">
 
-<div id="partModal"
-style="
-display:none;
-position:fixed;
-inset:0;
-background:#000b;
-z-index:999;
-align-items:center;
-justify-content:center;
-padding:20px;
-">
-
-<div class="panel" style="width:min(650px,100%)">
+<div class="panel modal-box">
 
 <h2 id="modalTitle">إضافة قطعة</h2>
 
@@ -959,25 +922,36 @@ padding:20px;
 
 <br>
 
-<button class="btn" onclick="savePart()">
+<button class="btn" type="button" onclick="savePart()">
 💾 حفظ القطعة
 </button>
 
-<button class="btn red" onclick="closePart()">
+<button class="btn red" type="button" onclick="closePart()">
 إلغاء
 </button>
 
 </div>
+
 </div>
 
+<style>
+#partModal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#000b;
+    z-index:9999;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal-box{
+    width:min(650px,100%);
+}
+</style>
 
 <script>
-
-let invoiceType = "قطاعي";
-let editingInvoiceId = null;
-let selectedConsole = "PS4";
-let editingPartId = null;
-
 
 /* =========================
    التنقل بين الصفحات
@@ -989,7 +963,7 @@ function showPage(id, button){
         page.classList.remove("active");
     });
 
-    const target = document.getElementById(id);
+    var target=document.getElementById(id);
 
     if(target){
         target.classList.add("active");
@@ -1003,14 +977,16 @@ function showPage(id, button){
         button.classList.add("active");
     }
 
-    if(id === "history") renderInvoices();
-    if(id === "editInvoice") renderEdit();
-    if(id === "pending") renderPending();
-    if(id === "parts") renderParts();
-    if(id === "prices") renderPrices();
-    if(id === "delivery") renderDelivery();
-    if(id === "sales") renderSales();
-    if(id === "settings") loadSettings();
+    if(id==="parts") renderParts();
+    if(id==="history") renderInvoices();
+    if(id==="editInvoice") renderEdit();
+    if(id==="pending") renderPending();
+    if(id==="prices") renderPrices();
+    if(id==="delivery") renderDelivery();
+    if(id==="sales") renderSales();
+    if(id==="settings") loadSettings();
+
+    window.scrollTo(0,0);
 }
 
 
@@ -1018,28 +994,31 @@ function showPage(id, button){
    الضوء
 ========================= */
 
-function toggleLight(){
+document.getElementById("lightButton").addEventListener("click",function(){
 
     document.body.classList.toggle("light");
 
-    const isLight =
-        document.body.classList.contains("light");
+    if(document.body.classList.contains("light")){
 
-    document.getElementById("lightButton").innerHTML =
-        isLight ? "🌙" : "☀️";
+        this.innerHTML="🌙";
 
-    localStorage.setItem(
-        "fantasyTheme",
-        isLight ? "light" : "dark"
-    );
-}
+        localStorage.setItem("fantasyTheme","light");
+
+    }else{
+
+        this.innerHTML="☀️";
+
+        localStorage.setItem("fantasyTheme","dark");
+    }
+
+});
 
 
-if(localStorage.getItem("fantasyTheme") === "light"){
+if(localStorage.getItem("fantasyTheme")==="light"){
 
     document.body.classList.add("light");
 
-    document.getElementById("lightButton").innerHTML = "🌙";
+    document.getElementById("lightButton").innerHTML="🌙";
 }
 
 
@@ -1047,133 +1026,76 @@ if(localStorage.getItem("fantasyTheme") === "light"){
    الفواتير
 ========================= */
 
-let invoices = JSON.parse(
+var invoices=JSON.parse(
     localStorage.getItem("fantasyInvoices") || "[]"
 );
 
+var invoiceType="قطاعي";
+
 function newInvoiceCode(){
 
-    return "INV-" + (
-        10033 + invoices.length + 1
-    );
+    return "INV-"+(10033 + invoices.length);
 }
 
-document.getElementById("invoiceCode").value =
-    newInvoiceCode();
+document.getElementById("invoiceCode").value=newInvoiceCode();
 
-document.getElementById("invoiceDate").value =
-    new Date().toISOString().split("T")[0];
+document.getElementById("invoiceDate").value=
+new Date().toISOString().split("T")[0];
 
 
 function setInvoiceType(type){
 
-    invoiceType = type;
+    invoiceType=type;
 
-    document.getElementById("retailBtn")
-        .classList.remove("selected");
+    document.getElementById("retailBtn").classList.remove("selected");
+    document.getElementById("commercialBtn").classList.remove("selected");
 
-    document.getElementById("commercialBtn")
-        .classList.remove("selected");
-
-    if(type === "قطاعي"){
-
-        document.getElementById("retailBtn")
-            .classList.add("selected");
-
+    if(type==="قطاعي"){
+        document.getElementById("retailBtn").classList.add("selected");
     }else{
-
-        document.getElementById("commercialBtn")
-            .classList.add("selected");
+        document.getElementById("commercialBtn").classList.add("selected");
     }
 }
 
 
 function saveInvoice(){
 
-    const name =
-        document.getElementById("customerName")
-        .value.trim();
+    var name=document.getElementById("customerName").value.trim();
 
     if(!name){
-
         alert("اكتب اسم العميل أولاً");
         return;
     }
 
-    const invoice = {
-
-        id: editingInvoiceId || Date.now(),
-
-        code: document.getElementById("invoiceCode").value,
-
-        date: document.getElementById("invoiceDate").value,
-
-        type: invoiceType,
-
-        name: name,
-
-        phone:
-        document.getElementById("customerPhone").value,
-
-        ps5:
-        document.getElementById("ps5Count").value,
-
-        ps4:
-        document.getElementById("ps4Count").value,
-
-        notes:
-        document.getElementById("invoiceNotes").value,
-
+    var invoice={
+        id:Date.now(),
+        code:document.getElementById("invoiceCode").value,
+        date:document.getElementById("invoiceDate").value,
+        type:invoiceType,
+        name:name,
+        phone:document.getElementById("customerPhone").value,
+        ps5:document.getElementById("ps5Count").value,
+        ps4:document.getElementById("ps4Count").value,
+        notes:document.getElementById("invoiceNotes").value,
         status:"معلقة"
     };
 
-    if(editingInvoiceId){
-
-        invoices = invoices.map(function(x){
-
-            return x.id === editingInvoiceId
-                ? invoice
-                : x;
-
-        });
-
-        editingInvoiceId = null;
-
-    }else{
-
-        invoices.push(invoice);
-    }
+    invoices.push(invoice);
 
     localStorage.setItem(
         "fantasyInvoices",
         JSON.stringify(invoices)
     );
 
-    alert("تم حفظ بيانات الفاتورة ✅");
+    alert("تم حفظ الفاتورة بنجاح ✅");
 
-    clearInvoiceForm();
-}
+    document.getElementById("customerName").value="";
+    document.getElementById("customerPhone").value="";
+    document.getElementById("invoiceNotes").value="";
+    document.getElementById("ps5Count").value="0";
+    document.getElementById("ps4Count").value="0";
 
-
-function clearInvoiceForm(){
-
-    document.getElementById("customerName").value = "";
-    document.getElementById("customerPhone").value = "";
-    document.getElementById("invoiceNotes").value = "";
-    document.getElementById("ps5Count").value = "0";
-    document.getElementById("ps4Count").value = "0";
-
-    document.getElementById("invoiceCode").value =
-        newInvoiceCode();
-
-    document.getElementById("invoiceDate").value =
-        new Date().toISOString().split("T")[0];
-}
-
-
-function printInvoice(){
-
-    window.print();
+    document.getElementById("invoiceCode").value=newInvoiceCode();
 }
 
 
@@ -1183,42 +1105,26 @@ function printInvoice(){
 
 function renderInvoices(){
 
-    const box =
-        document.getElementById("historyList");
+    var box=document.getElementById("historyList");
 
-    if(!invoices.length){
-
-        box.innerHTML =
-        '<div class="empty">لا توجد فواتير محفوظة</div>';
-
+    if(invoices.length===0){
+        box.innerHTML='<div class="empty">لا توجد فواتير محفوظة</div>';
         return;
     }
 
-    box.innerHTML =
-    invoices.slice().reverse().map(function(x){
+    box.innerHTML=invoices.slice().reverse().map(function(x){
 
         return `
         <div class="invoice">
-
             <div><strong>${safe(x.code)}</strong></div>
-
             <div>العميل: ${safe(x.name)}</div>
-
             <div>الهاتف: ${safe(x.phone)}</div>
-
-            <div>
-                PS5: ${safe(x.ps5)}
-                |
-                PS4: ${safe(x.ps4)}
-            </div>
-
+            <div>PS5: ${safe(x.ps5)} | PS4: ${safe(x.ps4)}</div>
+            <div>التاريخ: ${safe(x.date)}</div>
             <div>
                 الحالة:
-                <span class="status">
-                    ${safe(x.status)}
-                </span>
+                <span class="status">${safe(x.status)}</span>
             </div>
-
         </div>
         `;
 
@@ -1232,37 +1138,30 @@ function renderInvoices(){
 
 function renderEdit(){
 
-    const box =
-        document.getElementById("editList");
+    var box=document.getElementById("editList");
 
-    if(!invoices.length){
-
-        box.innerHTML =
-        '<div class="empty">لا توجد فواتير</div>';
-
+    if(invoices.length===0){
+        box.innerHTML='<div class="empty">لا توجد فواتير</div>';
         return;
     }
 
-    box.innerHTML =
-    invoices.slice().reverse().map(function(x){
+    box.innerHTML=invoices.slice().reverse().map(function(x){
 
         return `
         <div class="invoice">
 
             <strong>${safe(x.code)}</strong>
 
-            <div>
-                العميل: ${safe(x.name)}
-            </div>
+            <div>العميل: ${safe(x.name)}</div>
 
-            <button class="btn"
-                onclick="loadInvoice(${x.id})">
-                ✏️ تعديل
+            <button class="btn" type="button"
+            onclick="loadInvoice(${x.id})">
+            ✏️ تعديل
             </button>
 
-            <button class="btn red"
-                onclick="deleteInvoice(${x.id})">
-                🗑 حذف
+            <button class="btn red" type="button"
+            onclick="deleteInvoice(${x.id})">
+            🗑 حذف
             </button>
 
         </div>
@@ -1274,10 +1173,30 @@ function renderEdit(){
 
 function loadInvoice(id){
 
-    const x = invoices.find(function(i){
-        return i.id === id;
+    var x=invoices.find(function(item){
+        return item.id===id;
     });
 
-    if(!x) return;
+    if(!x)return;
 
-    editingI
+    document.getElementById("customerName").value=x.name;
+    document.getElementById("customerPhone").value=x.phone;
+    document.getElementById("ps5Count").value=x.ps5;
+    document.getElementById("ps4Count").value=x.ps4;
+    document.getElementById("invoiceNotes").value=x.notes;
+
+    setInvoiceType(x.type);
+
+    showPage("newInvoice");
+}
+
+
+function deleteInvoice(id){
+
+    if(!confirm("هل تريد حذف الفاتورة؟"))return;
+
+    invoices=invoices.filter(function(x){
+        return x.id!==id;
+    });
+
+    localStorage.set
