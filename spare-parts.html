@@ -3,30 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Fantasy Store - قطع الغيار</title>
 
 <style>
-
 *{
     box-sizing:border-box;
-    margin:0;
-    padding:0;
     font-family:Tahoma,Arial,sans-serif;
 }
 
 body{
-    background:#080808;
+    margin:0;
+    background:#080b10;
     color:#fff;
-    min-height:100vh;
 }
 
-/* ===== الشريط العلوي ===== */
-
+/* الشريط العلوي */
 .topbar{
     height:70px;
-    background:linear-gradient(135deg,#111,#1b1b1b);
-    border-bottom:1px solid #292929;
+    background:#11151c;
+    border-bottom:1px solid #26303d;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -34,175 +29,142 @@ body{
     position:sticky;
     top:0;
     z-index:100;
-    box-shadow:0 4px 20px rgba(0,0,0,.4);
 }
 
 .logo{
-    color:#ffd000;
+    color:#ffc400;
     font-size:23px;
     font-weight:bold;
-    letter-spacing:1px;
 }
 
-.menu{
+.top-buttons{
     display:flex;
     gap:8px;
-    flex-wrap:wrap;
 }
 
-.menu button{
-    background:#191919;
-    color:#ddd;
-    border:1px solid #333;
-    padding:10px 14px;
-    border-radius:9px;
+.top-buttons button{
+    border:1px solid #34404f;
+    background:#1a2029;
+    color:#fff;
+    padding:10px 15px;
+    border-radius:8px;
     cursor:pointer;
-    transition:.2s;
-    font-size:14px;
 }
 
-.menu button:hover{
-    background:#252525;
-    border-color:#ffd000;
-    color:#ffd000;
+.top-buttons button:hover{
+    border-color:#ffc400;
+    color:#ffc400;
 }
 
-.logout{
-    background:#351414 !important;
-    border-color:#6d2929 !important;
+.exit-btn{
+    background:#421b1b !important;
+    border-color:#733030 !important;
     color:#ff7777 !important;
 }
 
-.logout:hover{
-    background:#591b1b !important;
-    color:#fff !important;
-}
-
-/* ===== المحتوى ===== */
-
+/* المحتوى */
 .container{
     max-width:1200px;
     margin:auto;
-    padding:30px 20px;
-}
-
-.page-title{
-    background:linear-gradient(135deg,#151515,#101010);
-    border:1px solid #292929;
-    border-radius:16px;
     padding:25px;
-    margin-bottom:25px;
 }
 
-.page-title h1{
-    color:#ffd000;
+.header-box{
+    background:linear-gradient(135deg,#101720,#0c1118);
+    border:1px solid #26384d;
+    border-radius:15px;
+    padding:25px;
+    margin-bottom:22px;
+}
+
+.header-box h1{
+    margin:0 0 8px;
+    color:#ffc400;
     font-size:28px;
-    margin-bottom:8px;
 }
 
-.page-title p{
-    color:#888;
+.header-box p{
+    margin:0;
+    color:#8e9aaa;
 }
 
-/* ===== الكروت ===== */
-
+/* الأقسام */
 .console-box{
-    background:#111;
-    border:1px solid #292929;
-    border-radius:16px;
+    background:#0e141b;
+    border:1px solid #26384d;
+    border-radius:15px;
     padding:20px;
-    margin-bottom:25px;
-    box-shadow:0 5px 25px rgba(0,0,0,.25);
+    margin-bottom:22px;
 }
 
 .console-header{
     display:flex;
-    align-items:center;
     justify-content:space-between;
-    gap:15px;
+    align-items:center;
     margin-bottom:18px;
 }
 
-.console-title{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.console-title h2{
+.console-header h2{
+    margin:0;
     font-size:21px;
 }
 
-.badge{
-    background:#242000;
-    color:#ffd000;
-    border:1px solid #554900;
-    padding:5px 9px;
-    border-radius:20px;
-    font-size:12px;
+.count{
+    color:#ffc400;
+    font-size:13px;
+    margin-right:8px;
 }
 
 .add-btn{
-    background:linear-gradient(135deg,#ffd000,#e0b500);
-    color:#000;
-    border:none;
-    padding:11px 17px;
-    border-radius:9px;
+    background:#ffc400;
+    color:#111;
+    border:0;
+    padding:11px 18px;
+    border-radius:8px;
     font-weight:bold;
     cursor:pointer;
-    box-shadow:0 3px 10px rgba(255,208,0,.15);
 }
 
 .add-btn:hover{
-    transform:translateY(-1px);
-    filter:brightness(1.05);
+    background:#e5ae00;
 }
 
-/* ===== الجدول ===== */
-
+/* الجدول */
 .table-head,
 .part-row{
     display:grid;
-    grid-template-columns:2fr 1.2fr 1fr 1fr .8fr 1.5fr;
+    grid-template-columns:2fr 1.3fr 1.2fr 1.2fr .8fr 1.4fr;
     gap:10px;
     align-items:center;
 }
 
 .table-head{
-    background:#1b1b1b;
-    color:#ffd000;
+    background:#17202a;
+    color:#ffc400;
     padding:13px;
-    border-radius:10px;
+    border-radius:8px;
     font-size:13px;
 }
 
 .part-row{
-    background:#161616;
-    border:1px solid #242424;
-    padding:13px;
-    margin-top:8px;
-    border-radius:10px;
-    transition:.2s;
-}
-
-.part-row:hover{
-    border-color:#444;
-    background:#191919;
+    background:#111820;
+    border:1px solid #202c39;
+    padding:12px;
+    margin-top:7px;
+    border-radius:8px;
 }
 
 .part-name{
     font-weight:bold;
-    color:#fff;
 }
 
 .part-type{
-    color:#aaa;
+    color:#d6d6d6;
 }
 
 .price,
 .quantity{
     text-align:center;
-    color:#ddd;
 }
 
 .actions{
@@ -211,43 +173,33 @@ body{
 }
 
 .actions button{
-    border:none;
-    border-radius:7px;
-    padding:7px 9px;
-    cursor:pointer;
+    border:0;
     color:#fff;
-    font-size:12px;
+    padding:7px 10px;
+    border-radius:6px;
+    cursor:pointer;
 }
 
 .edit{
-    background:#225b9c;
-}
-
-.edit:hover{
-    background:#2c73c2;
+    background:#1765aa;
 }
 
 .delete{
-    background:#8d2525;
-}
-
-.delete:hover{
-    background:#b72e2e;
+    background:#a52323;
 }
 
 .empty{
     text-align:center;
-    color:#666;
-    padding:30px 10px;
+    color:#687585;
+    padding:25px;
 }
 
-/* ===== النافذة ===== */
-
+/* النافذة */
 .modal{
     display:none;
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.78);
+    background:rgba(0,0,0,.8);
     align-items:center;
     justify-content:center;
     z-index:999;
@@ -256,10 +208,10 @@ body{
 
 .modal-box{
     width:100%;
-    max-width:500px;
-    background:#131313;
-    border:1px solid #363636;
-    border-radius:17px;
+    max-width:480px;
+    background:#10161e;
+    border:1px solid #ffc400;
+    border-radius:15px;
     padding:25px;
     box-shadow:0 15px 50px rgba(0,0,0,.7);
 }
@@ -272,108 +224,94 @@ body{
 }
 
 .modal-title h2{
-    color:#ffd000;
+    margin:0;
+    color:#ffc400;
     font-size:21px;
 }
 
-.close-x{
-    background:#222;
-    color:#aaa;
-    border:1px solid #333;
-    width:34px;
-    height:34px;
-    border-radius:8px;
+.close{
+    width:35px;
+    height:35px;
+    border:0;
+    border-radius:7px;
+    background:#242b34;
+    color:#fff;
+    font-size:20px;
     cursor:pointer;
-    font-size:18px;
 }
 
-.input-group{
+.field{
     margin-bottom:15px;
 }
 
-.input-group label{
+.field label{
     display:block;
-    color:#ccc;
+    color:#d8d8d8;
     margin-bottom:7px;
     font-size:14px;
 }
 
-.input-group input,
-.input-group select{
+.field input,
+.field select{
     width:100%;
-    background:#202020;
-    border:1px solid #383838;
-    color:#fff;
     padding:12px;
-    border-radius:9px;
+    border-radius:8px;
+    border:1px solid #334252;
+    background:#18212b;
+    color:#fff;
     outline:none;
 }
 
-.input-group input:focus,
-.input-group select:focus{
-    border-color:#ffd000;
-}
-
-.modal-buttons{
-    display:flex;
-    gap:10px;
-    margin-top:20px;
-}
-
-.save-btn,
-.cancel-btn{
-    flex:1;
-    border:none;
-    padding:12px;
-    border-radius:9px;
-    cursor:pointer;
-    font-weight:bold;
+.field input:focus,
+.field select:focus{
+    border-color:#ffc400;
 }
 
 .save-btn{
-    background:#ffd000;
-    color:#000;
+    width:100%;
+    padding:13px;
+    background:#ffc400;
+    color:#111;
+    border:0;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:15px;
 }
 
 .cancel-btn{
-    background:#333;
+    width:100%;
+    padding:11px;
+    margin-top:9px;
+    background:#293442;
     color:#fff;
+    border:0;
+    border-radius:8px;
+    cursor:pointer;
 }
 
-/* ===== الفوتر ===== */
-
-.footer{
-    text-align:center;
-    color:#555;
-    padding:20px;
-    font-size:12px;
-}
-
-/* ===== الموبايل ===== */
-
-@media(max-width:750px){
+/* الموبايل */
+@media(max-width:700px){
 
     .topbar{
         height:auto;
-        padding:14px;
+        padding:12px;
         flex-direction:column;
-        gap:13px;
+        gap:12px;
     }
 
-    .menu{
+    .top-buttons{
+        flex-wrap:wrap;
         justify-content:center;
     }
 
     .container{
-        padding:18px 10px;
-    }
-
-    .page-title h1{
-        font-size:23px;
+        padding:12px;
     }
 
     .console-header{
         flex-direction:column;
+        gap:12px;
         align-items:stretch;
     }
 
@@ -391,28 +329,25 @@ body{
     }
 
     .actions{
-        grid-column:1 / -1;
+        grid-column:1/-1;
     }
-
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- ===== الشريط العلوي ===== -->
-
+<!-- الشريط العلوي -->
 <div class="topbar">
 
     <div class="logo">
         🎮 FANTASY STORE
     </div>
 
-    <div class="menu">
+    <div class="top-buttons">
 
-        <button onclick="location.href='spare-parts.html'">
-            🔧 قطع الغيار
+        <button onclick="goHome()">
+            🏠 الرئيسية
         </button>
 
         <button onclick="location.href='settings.html'">
@@ -423,7 +358,7 @@ body{
             💡 الوضع
         </button>
 
-        <button class="logout" onclick="logout()">
+        <button class="exit-btn" onclick="goBack()">
             🚪 خروج
         </button>
 
@@ -432,49 +367,43 @@ body{
 </div>
 
 
-<!-- ===== المحتوى ===== -->
-
 <div class="container">
 
-    <div class="page-title">
+    <!-- العنوان -->
+    <div class="header-box">
 
         <h1>🔧 إدارة قطع الغيار</h1>
 
         <p>
-            إدارة قطع غيار أجهزة البلايستيشن والأسعار والكميات
+            إدارة قطع غيار خاصة بدراعات فور وفايف
         </p>
 
     </div>
 
 
-    <!-- ===== PS4 ===== -->
-
+    <!-- PS4 -->
     <div class="console-box">
 
         <div class="console-header">
 
-            <div class="console-title">
-
-                <h2>🎮 قطع غيار PS4</h2>
-
-                <span class="badge" id="ps4Count">
-                    0 قطعة
-                </span>
-
-            </div>
+            <h2>
+                🎮 قطع غيار PS4
+                <span class="count" id="ps4Count">0 قطعة</span>
+            </h2>
 
             <button class="add-btn" onclick="openAdd('PS4')">
-                ➕ إضافة قطعة PS4
+                ➕ إضافة قطعة
             </button>
 
         </div>
 
+
         <div class="table-head">
 
             <div>اسم القطعة</div>
-            <div>النوع</div>
-            <div>سعر البيع</div>
-            <div>سعر الجملة</div>
+            <div>نوع القطعة</div>
+            <div>السعر القطاعي</div>
+            <div>السعر التجاري</div>
             <div>الكمية</div>
             <div>الإجراءات</div>
 
@@ -485,34 +414,29 @@ body{
     </div>
 
 
-    <!-- ===== PS5 ===== -->
-
+    <!-- PS5 -->
     <div class="console-box">
 
         <div class="console-header">
 
-            <div class="console-title">
-
-                <h2>🎮 قطع غيار PS5</h2>
-
-                <span class="badge" id="ps5Count">
-                    0 قطعة
-                </span>
-
-            </div>
+            <h2>
+                🎮 قطع غيار PS5
+                <span class="count" id="ps5Count">0 قطعة</span>
+            </h2>
 
             <button class="add-btn" onclick="openAdd('PS5')">
-                ➕ إضافة قطعة PS5
+                ➕ إضافة قطعة
             </button>
 
         </div>
 
+
         <div class="table-head">
 
             <div>اسم القطعة</div>
-            <div>النوع</div>
-            <div>سعر البيع</div>
-            <div>سعر الجملة</div>
+            <div>نوع القطعة</div>
+            <div>السعر القطاعي</div>
+            <div>السعر التجاري</div>
             <div>الكمية</div>
             <div>الإجراءات</div>
 
@@ -525,85 +449,70 @@ body{
 </div>
 
 
-<div class="footer">
-    FANTASY STORE © 2026
-</div>
-
-
-<!-- ===== نافذة الإضافة ===== -->
-
-<div class="modal" id="addModal">
+<!-- نافذة إضافة القطعة -->
+<div class="modal" id="modal">
 
     <div class="modal-box">
 
         <div class="modal-title">
 
             <h2 id="modalTitle">
-                ➕ إضافة قطعة
+                ➕ إضافة قطعة جديدة
             </h2>
 
-            <button class="close-x" onclick="closeAdd()">
+            <button class="close" onclick="closeModal()">
                 ×
             </button>
 
         </div>
 
 
-        <div class="input-group">
+        <!-- اسم القطعة -->
+        <div class="field">
 
             <label>اسم القطعة</label>
 
             <input
                 type="text"
                 id="partName"
-                placeholder="مثال: أنالوج"
+                placeholder="اكتب اسم القطعة"
             >
 
         </div>
 
 
-        <div class="input-group">
+        <!-- السعر القطاعي -->
+        <div class="field">
 
-            <label>نوع القطعة</label>
-
-            <select id="partType">
-
-                <option value="أصلي">أصلي</option>
-                <option value="كوبي">كوبي</option>
-                <option value="تجاري">تجاري</option>
-
-            </select>
-
-        </div>
-
-
-        <div class="input-group">
-
-            <label>سعر البيع</label>
+            <label>السعر القطاعي</label>
 
             <input
                 type="number"
                 id="retailPrice"
-                placeholder="0"
+                placeholder="اكتب السعر القطاعي"
+                min="0"
             >
 
         </div>
 
 
-        <div class="input-group">
+        <!-- السعر التجاري -->
+        <div class="field">
 
-            <label>سعر الجملة</label>
+            <label>السعر التجاري</label>
 
             <input
                 type="number"
                 id="commercialPrice"
-                placeholder="0"
+                placeholder="اكتب السعر التجاري"
+                min="0"
             >
 
         </div>
 
 
-        <div class="input-group">
+        <!-- الكمية -->
+        <div class="field">
 
             <label>الكمية</label>
 
@@ -617,17 +526,34 @@ body{
         </div>
 
 
-        <div class="modal-buttons">
+        <!-- نوع القطعة -->
+        <div class="field">
 
-            <button class="save-btn" onclick="savePart()">
-                💾 حفظ القطعة
-            </button>
+            <label>نوع القطعة</label>
 
-            <button class="cancel-btn" onclick="closeAdd()">
-                إلغاء
-            </button>
+            <select id="partType">
+
+                <option value="مفردة">
+                    مفردة
+                </option>
+
+                <option value="مزدوجة (ترقيم/أمامي)">
+                    مزدوجة (ترقيم/أمامي)
+                </option>
+
+            </select>
 
         </div>
+
+
+        <!-- حفظ -->
+        <button class="save-btn" onclick="savePart()">
+            💾 حفظ القطعة
+        </button>
+
+        <button class="cancel-btn" onclick="closeModal()">
+            إلغاء
+        </button>
 
     </div>
 
@@ -642,9 +568,7 @@ let selectedConsole = "";
 let editingId = null;
 
 
-/* =========================
-   قراءة البيانات المحفوظة
-========================= */
+/* قراءة القطع المحفوظة */
 
 function getParts(){
 
@@ -654,7 +578,7 @@ function getParts(){
             localStorage.getItem(STORAGE_KEY)
         ) || [];
 
-    }catch(e){
+    }catch(error){
 
         return [];
 
@@ -663,9 +587,7 @@ function getParts(){
 }
 
 
-/* =========================
-   حفظ البيانات
-========================= */
+/* حفظ القطع */
 
 function saveParts(parts){
 
@@ -677,9 +599,7 @@ function saveParts(parts){
 }
 
 
-/* =========================
-   فتح نافذة الإضافة
-========================= */
+/* فتح الإضافة */
 
 function openAdd(consoleType){
 
@@ -690,44 +610,31 @@ function openAdd(consoleType){
         "➕ إضافة قطعة " + consoleType;
 
     document.getElementById("partName").value = "";
-    document.getElementById("partType").value = "أصلي";
     document.getElementById("retailPrice").value = "";
     document.getElementById("commercialPrice").value = "";
     document.getElementById("partQuantity").value = "0";
+    document.getElementById("partType").value = "مفردة";
 
-    document.getElementById("addModal").style.display = "flex";
-
-    setTimeout(function(){
-
-        document.getElementById("partName").focus();
-
-    },100);
+    document.getElementById("modal").style.display = "flex";
 
 }
 
 
-/* =========================
-   إغلاق النافذة
-========================= */
+/* إغلاق */
 
-function closeAdd(){
+function closeModal(){
 
-    document.getElementById("addModal").style.display = "none";
+    document.getElementById("modal").style.display = "none";
 
 }
 
 
-/* =========================
-   حفظ القطعة
-========================= */
+/* حفظ القطعة */
 
 function savePart(){
 
     const name =
         document.getElementById("partName").value.trim();
-
-    const type =
-        document.getElementById("partType").value;
 
     const retail =
         document.getElementById("retailPrice").value || "0";
@@ -738,10 +645,13 @@ function savePart(){
     const quantity =
         document.getElementById("partQuantity").value || "0";
 
+    const type =
+        document.getElementById("partType").value;
 
-    if(!name){
 
-        alert("من فضلك اكتب اسم القطعة أولاً");
+    if(name === ""){
+
+        alert("من فضلك اكتب اسم القطعة");
 
         return;
 
@@ -764,15 +674,14 @@ function savePart(){
         if(index !== -1){
 
             parts[index].name = name;
-            parts[index].type = type;
             parts[index].retail = retail;
             parts[index].commercial = commercial;
             parts[index].quantity = quantity;
+            parts[index].type = type;
 
         }
 
     }
-
 
     /* إضافة */
 
@@ -786,43 +695,43 @@ function savePart(){
 
             name: name,
 
-            type: type,
-
             retail: retail,
 
             commercial: commercial,
 
-            quantity: quantity
+            quantity: quantity,
+
+            type: type
 
         });
 
     }
 
 
+    /* الحفظ الحقيقي */
+
     saveParts(parts);
 
     renderParts();
 
-    closeAdd();
+    closeModal();
 
 }
 
 
-/* =========================
-   عرض البيانات
-========================= */
+/* عرض القطع */
 
 function renderParts(){
 
-    const ps4 =
+    const ps4List =
         document.getElementById("ps4-list");
 
-    const ps5 =
+    const ps5List =
         document.getElementById("ps5-list");
 
 
-    ps4.innerHTML = "";
-    ps5.innerHTML = "";
+    ps4List.innerHTML = "";
+    ps5List.innerHTML = "";
 
 
     const parts = getParts();
@@ -844,14 +753,14 @@ function renderParts(){
 
     if(ps4Parts.length === 0){
 
-        ps4.innerHTML =
-            '<div class="empty">لا توجد قطع غيار PS4 حتى الآن</div>';
+        ps4List.innerHTML =
+            '<div class="empty">لا توجد قطع غيار PS4</div>';
 
     }else{
 
         ps4Parts.forEach(function(part){
 
-            ps4.appendChild(
+            ps4List.appendChild(
                 createRow(part)
             );
 
@@ -862,14 +771,14 @@ function renderParts(){
 
     if(ps5Parts.length === 0){
 
-        ps5.innerHTML =
-            '<div class="empty">لا توجد قطع غيار PS5 حتى الآن</div>';
+        ps5List.innerHTML =
+            '<div class="empty">لا توجد قطع غيار PS5</div>';
 
     }else{
 
         ps5Parts.forEach(function(part){
 
-            ps5.appendChild(
+            ps5List.appendChild(
                 createRow(part)
             );
 
@@ -880,9 +789,7 @@ function renderParts(){
 }
 
 
-/* =========================
-   إنشاء صف
-========================= */
+/* إنشاء الصف */
 
 function createRow(part){
 
@@ -976,43 +883,11 @@ function createRow(part){
 }
 
 
-/* =========================
-   حذف
-========================= */
-
-function deletePart(id){
-
-    const answer =
-        confirm("هل تريد حذف هذه القطعة؟");
-
-
-    if(!answer) return;
-
-
-    let parts = getParts();
-
-
-    parts =
-        parts.filter(
-            part => part.id !== id
-        );
-
-
-    saveParts(parts);
-
-    renderParts();
-
-}
-
-
-/* =========================
-   تعديل
-========================= */
+/* تعديل */
 
 function editPart(id){
 
     const parts = getParts();
-
 
     const part =
         parts.find(
@@ -1035,9 +910,6 @@ function editPart(id){
     document.getElementById("partName").value =
         part.name;
 
-    document.getElementById("partType").value =
-        part.type;
-
     document.getElementById("retailPrice").value =
         part.retail;
 
@@ -1047,54 +919,84 @@ function editPart(id){
     document.getElementById("partQuantity").value =
         part.quantity;
 
+    document.getElementById("partType").value =
+        part.type;
 
-    document.getElementById("addModal").style.display =
+
+    document.getElementById("modal").style.display =
         "flex";
 
 }
 
 
-/* =========================
-   زر الخروج
-========================= */
+/* حذف */
 
-function logout(){
+function deletePart(id){
 
-    const answer =
-        confirm("هل تريد الخروج من الموقع؟");
+    if(!confirm("هل تريد حذف هذه القطعة؟")){
 
+        return;
 
-    if(!answer) return;
+    }
 
 
-    /*
-       غيّر login.html لو اسم صفحة الدخول
-       عندك مختلف
-    */
+    let parts = getParts();
 
-    window.location.href = "login.html";
+
+    parts =
+        parts.filter(
+            p => p.id !== id
+        );
+
+
+    saveParts(parts);
+
+    renderParts();
 
 }
 
 
-/* =========================
-   الوضع الليلي / الفاتح
-========================= */
+/* الرئيسية */
+
+function goHome(){
+
+    /*
+      هنا هنرجع للصفحة الرئيسية
+      غيّر الاسم فقط لو صفحتك الرئيسية
+      اسمها مختلف
+    */
+
+    window.location.href = "home.html";
+
+}
+
+
+/* خروج من صفحة قطع الغيار فقط */
+
+function goBack(){
+
+    window.location.href = "home.html";
+
+}
+
+
+/* تغيير الوضع */
 
 function toggleTheme(){
 
-    const light =
-        localStorage.getItem("fantasyTheme") === "light";
+    const current =
+        localStorage.getItem("fantasyTheme");
 
 
-    if(light){
+    if(current === "light"){
 
         localStorage.setItem(
             "fantasyTheme",
             "dark"
         );
 
-        document.body.style.background = "#080808";
+        document.body.style.background =
+            "#080b10";
 
     }else{
 
@@ -1103,35 +1005,32 @@ function toggleTheme(){
             "light"
         );
 
-        document.body.style.background = "#eeeeee";
+        document.body.style.background =
+            "#eeeeee";
 
     }
 
 }
 
 
-/* =========================
-   إغلاق النافذة بالضغط خارجها
-========================= */
+/* الضغط خارج النافذة */
 
 window.onclick = function(event){
 
     const modal =
-        document.getElementById("addModal");
+        document.getElementById("modal");
 
 
     if(event.target === modal){
 
-        closeAdd();
+        closeModal();
 
     }
 
 };
 
 
-/* =========================
-   تشغيل الصفحة
-========================= */
+/* تحميل البيانات عند فتح الصفحة */
 
 document.addEventListener(
     "DOMContentLoaded",
