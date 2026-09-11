@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Fantasy Store</title>
+<title>FANTASY STORE</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -16,17 +14,16 @@
 }
 
 body{
-    background:#050a12;
+    background:#060b14;
     color:white;
     min-height:100vh;
 }
 
-/* ================= الشريط العلوي ================= */
-
+/* الشريط العلوي */
 .topbar{
     height:70px;
-    background:#08101b;
-    border-bottom:1px solid #18324d;
+    background:#0b1320;
+    border-bottom:1px solid #1d3955;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -49,130 +46,71 @@ body{
     font-size:14px;
 }
 
-/* ================= القائمة الجانبية ================= */
-
+/* القائمة */
 .sidebar{
     position:fixed;
-    top:70px;
     right:0;
+    top:70px;
     bottom:0;
-
     width:260px;
-
-    background:linear-gradient(
-        180deg,
-        #09121f,
-        #050b13
-    );
-
-    border-left:1px solid #18324d;
-
-    padding:20px 14px;
-
+    background:#09121e;
+    border-left:1px solid #1d3955;
+    padding:18px 12px;
     overflow-y:auto;
-
-    z-index:900;
 }
 
-.sidebar-title{
-    color:#71839a;
+.menu-title{
+    color:#74879b;
     font-size:13px;
-    margin:5px 10px 15px;
+    padding:5px 12px 15px;
 }
 
 .nav-btn{
     width:100%;
-
+    background:transparent;
+    border:1px solid transparent;
+    color:#dce4ed;
+    padding:13px 15px;
+    margin-bottom:6px;
+    border-radius:9px;
+    cursor:pointer;
     display:flex;
     align-items:center;
-
     gap:12px;
-
-    background:transparent;
-
-    color:#d8e0ea;
-
-    border:1px solid transparent;
-
-    padding:14px 15px;
-
-    margin-bottom:7px;
-
-    border-radius:10px;
-
-    cursor:pointer;
-
     font-size:15px;
-
     text-align:right;
-
-    transition:.2s;
 }
 
 .nav-btn:hover{
-    background:#101e2d;
-    border-color:#21415f;
+    background:#122235;
     color:#ffc400;
+    border-color:#254766;
 }
 
 .nav-btn.active{
-    background:linear-gradient(
-        135deg,
-        #ffc400,
-        #e5a900
-    );
-
+    background:#ffc400;
     color:#111;
-
     font-weight:bold;
-
-    box-shadow:
-        0 5px 20px
-        rgba(255,196,0,.18);
 }
 
 .icon{
     width:25px;
     text-align:center;
-    font-size:19px;
+    font-size:18px;
 }
 
-/* ================= المحتوى ================= */
-
+/* المحتوى */
 .main{
-    position:absolute;
-
-    top:70px;
-    right:260px;
-    left:0;
-    bottom:0;
-
-    padding:25px;
-
-    overflow:auto;
+    margin-right:260px;
+    padding:95px 25px 30px;
+    min-height:100vh;
 }
-
-/* ================= الصفحة الرئيسية ================= */
 
 .welcome{
-    background:
-        radial-gradient(
-            circle at 20% 50%,
-            rgba(0,90,180,.18),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #0b1725,
-            #07101a
-        );
-
-    border:1px solid #1b3d5e;
-
-    border-radius:18px;
-
+    background:linear-gradient(135deg,#0d1b2b,#09121d);
+    border:1px solid #204564;
+    border-radius:17px;
     padding:35px;
-
     margin-bottom:25px;
 }
 
@@ -183,140 +121,87 @@ body{
 }
 
 .welcome p{
-    color:#8fa1b5;
-    font-size:15px;
+    color:#8497ab;
 }
 
-/* ================= الكروت ================= */
-
+/* الكروت */
 .cards{
     display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
+    grid-template-columns:repeat(2,1fr);
     gap:18px;
 }
 
 .card{
-    background:#0b141f;
-
-    border:1px solid #1b344c;
-
+    background:#0c1723;
+    border:1px solid #1e3a54;
     border-radius:15px;
-
     padding:25px;
-
-    min-height:150px;
-
     cursor:pointer;
-
-    transition:.25s;
-
-    position:relative;
-
-    overflow:hidden;
+    min-height:150px;
+    transition:.2s;
 }
 
 .card:hover{
-    transform:translateY(-3px);
-
     border-color:#ffc400;
-
-    box-shadow:
-        0 10px 35px
-        rgba(0,0,0,.3);
+    transform:translateY(-3px);
 }
 
 .card-icon{
     font-size:40px;
-
-    margin-bottom:15px;
+    margin-bottom:14px;
 }
 
 .card h2{
-    color:#fff;
-
     font-size:19px;
-
     margin-bottom:8px;
 }
 
 .card p{
-    color:#77899d;
-
+    color:#778a9e;
     font-size:13px;
 }
 
-/* ================= العنوان الداخلي ================= */
-
-.page-head{
-    background:#0b141f;
-
-    border:1px solid #1b344c;
-
-    border-radius:15px;
-
-    padding:22px;
-
-    margin-bottom:20px;
-}
-
-.page-head h1{
-    color:#ffc400;
-
-    font-size:25px;
-
-    margin-bottom:7px;
-}
-
-.page-head p{
-    color:#7e91a5;
-}
-
-/* ================= زر الرجوع ================= */
-
-.back-btn{
-    background:#162638;
-
-    color:#fff;
-
-    border:1px solid #29445e;
-
-    padding:10px 18px;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
-    margin-bottom:18px;
-}
-
-.back-btn:hover{
-    color:#ffc400;
-
-    border-color:#ffc400;
-}
-
-/* ================= iframe ================= */
-
-.page-frame{
-    width:100%;
-
-    height:
-        calc(100vh - 145px);
-
-    border:0;
-
-    border-radius:15px;
-
-    background:#050a12;
-
+/* شاشة القسم */
+#sectionPage{
     display:none;
 }
 
-/* ================= الموبايل ================= */
+.section-head{
+    background:#0c1723;
+    border:1px solid #1e3a54;
+    border-radius:15px;
+    padding:22px;
+    margin-bottom:18px;
+}
 
+.section-head h1{
+    color:#ffc400;
+    margin-bottom:7px;
+}
+
+.section-head p{
+    color:#8194a8;
+}
+
+.back{
+    background:#17283a;
+    border:1px solid #29445e;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-bottom:18px;
+}
+
+.frame{
+    width:100%;
+    height:calc(100vh - 230px);
+    border:1px solid #1e3a54;
+    border-radius:15px;
+    background:#060b14;
+}
+
+/* موبايل */
 @media(max-width:800px){
 
     .topbar{
@@ -332,189 +217,126 @@ body{
     }
 
     .sidebar{
-        width:75px;
-
-        padding:15px 8px;
+        width:72px;
+        padding:15px 7px;
     }
 
-    .sidebar-title{
+    .menu-title{
         display:none;
     }
 
     .nav-btn{
         justify-content:center;
-
-        padding:13px 5px;
+        padding:13px 4px;
     }
 
     .nav-btn span:not(.icon){
         display:none;
     }
 
-    .icon{
-        font-size:22px;
-    }
-
     .main{
-        right:75px;
-
-        padding:12px;
+        margin-right:72px;
+        padding:85px 10px 20px;
     }
 
     .cards{
         grid-template-columns:1fr;
     }
-
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- ================= الشريط العلوي ================= -->
-
-<div class="topbar">
+<!-- الشريط العلوي -->
+<header class="topbar">
 
     <div class="logo">
         🎮 FANTASY STORE
     </div>
 
     <div class="status">
-        ● متصل بالسحابة - مباشر
+        ● متصل بالسحابة
     </div>
 
-</div>
+</header>
 
 
-<!-- ================= القائمة ================= -->
-
+<!-- القائمة الجانبية -->
 <aside class="sidebar">
 
-    <div class="sidebar-title">
+    <div class="menu-title">
         لوحة التحكم
     </div>
 
-
-    <button class="nav-btn active"
-            onclick="showHome(this)">
-
+    <button class="nav-btn active" onclick="home(this)">
         <span class="icon">🏠</span>
         <span>الرئيسية</span>
-
     </button>
 
-
-    <button class="nav-btn"
-            onclick="openPage('فاتورة جديدة','invoice.html',this)">
-
+    <button class="nav-btn" onclick="openSection('فاتورة جديدة','invoice.html',this)">
         <span class="icon">🧾</span>
         <span>فاتورة جديدة</span>
-
     </button>
 
-
-    <button class="nav-btn"
-            onclick="openPage('تعديل فاتورة','edit-invoice.html',this)">
-
+    <button class="nav-btn" onclick="openSection('تعديل فاتورة','edit-invoice.html',this)">
         <span class="icon">✏️</span>
         <span>تعديل فاتورة</span>
-
     </button>
 
-
-    <button class="nav-btn"
-            onclick="openPage('جدول الأسعار','prices.html',this)">
-
+    <button class="nav-btn" onclick="openSection('جدول الأسعار','prices.html',this)">
         <span class="icon">💰</span>
         <span>جدول الأسعار</span>
-
     </button>
 
-
-    <button class="nav-btn"
-            onclick="openPage('قطع الغيار','spare-parts.html',this)">
-
+    <button class="nav-btn" onclick="openSection('قطع الغيار','spare-parts.html',this)">
         <span class="icon">🔧</span>
         <span>قطع الغيار</span>
-
     </button>
 
-
-    <button class="nav-btn"
-            onclick="openPage('سجل الفواتير','invoices.html',this)">
-
+    <button class="nav-btn" onclick="openSection('سجل الفواتير','invoices.html',this)">
         <span class="icon">📋</span>
         <span>سجل الفواتير</span>
-
     </button>
 
-
-    <button class="nav-btn"
-            onclick="openPage('الفواتير المعلقة','pending.html',this)">
-
+    <button class="nav-btn" onclick="openSection('الفواتير المعلقة','pending.html',this)">
         <span class="icon">🕐</span>
         <span>الفواتير المعلقة</span>
-
     </button>
 
-
-    <button class="nav-btn"
-            onclick="openPage('الاستلام والتسليم','delivery.html',this)">
-
+    <button class="nav-btn" onclick="openSection('الاستلام والتسليم','delivery.html',this)">
         <span class="icon">🚚</span>
         <span>الاستلام والتسليم</span>
-
     </button>
 
-
-    <button class="nav-btn"
-            onclick="openPage('فاتورة بيع','sales.html',this)">
-
+    <button class="nav-btn" onclick="openSection('فاتورة بيع','sales.html',this)">
         <span class="icon">🏷️</span>
         <span>فاتورة بيع</span>
-
     </button>
 
-
-    <button class="nav-btn"
-            onclick="openPage('الإعدادات','settings.html',this)">
-
+    <button class="nav-btn" onclick="openSection('الإعدادات','settings.html',this)">
         <span class="icon">⚙️</span>
         <span>الإعدادات</span>
-
     </button>
 
-
-    <br>
-
-
-    <button class="nav-btn"
-            onclick="goBack()">
-
+    <button class="nav-btn" onclick="goBack()">
         <span class="icon">🚪</span>
         <span>خروج</span>
-
     </button>
 
 </aside>
 
 
-<!-- ================= المحتوى ================= -->
-
+<!-- المحتوى -->
 <main class="main">
 
-
-    <!-- الصفحة الرئيسية -->
-
-    <section id="homeContent">
+    <!-- الرئيسية -->
+    <section id="homePage">
 
         <div class="welcome">
 
             <h1>
-                مرحباً بك في Fantasy Store 🎮
+                مرحباً بك في FANTASY STORE 🎮
             </h1>
 
             <p>
@@ -526,230 +348,136 @@ body{
 
         <div class="cards">
 
-
             <div class="card"
-                 onclick="openPage('فاتورة جديدة','invoice.html',null)">
+                 onclick="openSection('فاتورة جديدة','invoice.html')">
 
-                <div class="card-icon">
-                    🧾
-                </div>
+                <div class="card-icon">🧾</div>
 
-                <h2>
-                    فاتورة جديدة
-                </h2>
+                <h2>فاتورة جديدة</h2>
 
-                <p>
-                    إنشاء فاتورة صيانة جديدة
-                </p>
+                <p>إنشاء فاتورة صيانة جديدة</p>
 
             </div>
 
 
             <div class="card"
-                 onclick="openPage('قطع الغيار','spare-parts.html',null)">
+                 onclick="openSection('قطع الغيار','spare-parts.html')">
 
-                <div class="card-icon">
-                    🔧
-                </div>
+                <div class="card-icon">🔧</div>
 
-                <h2>
-                    قطع الغيار
-                </h2>
+                <h2>قطع الغيار</h2>
 
-                <p>
-                    إدارة قطع غيار PS4 و PS5
-                </p>
+                <p>إدارة قطع غيار PS4 و PS5</p>
 
             </div>
 
 
             <div class="card"
-                 onclick="openPage('جدول الأسعار','prices.html',null)">
+                 onclick="openSection('جدول الأسعار','prices.html')">
 
-                <div class="card-icon">
-                    💰
-                </div>
+                <div class="card-icon">💰</div>
 
-                <h2>
-                    جدول الأسعار
-                </h2>
+                <h2>جدول الأسعار</h2>
 
-                <p>
-                    إدارة أسعار الصيانة والخدمات
-                </p>
+                <p>إدارة أسعار الصيانة</p>
 
             </div>
 
 
             <div class="card"
-                 onclick="openPage('الإعدادات','settings.html',null)">
+                 onclick="openSection('الإعدادات','settings.html')">
 
-                <div class="card-icon">
-                    ⚙️
-                </div>
+                <div class="card-icon">⚙️</div>
 
-                <h2>
-                    الإعدادات
-                </h2>
+                <h2>الإعدادات</h2>
 
-                <p>
-                    إعدادات الموقع والحفظ والنسخ الاحتياطي
-                </p>
+                <p>إعدادات الموقع والحفظ والنسخ الاحتياطي</p>
 
             </div>
-
 
         </div>
 
     </section>
 
 
-    <!-- عنوان الصفحة -->
+    <!-- القسم المختار -->
+    <section id="sectionPage">
 
-    <section id="pageContent" style="display:none;">
-
-        <button class="back-btn"
-                onclick="showHome()">
-
-            ← العودة للرئيسية
-
+        <button class="back" onclick="home()">
+            ← الرئيسية
         </button>
 
+        <div class="section-head">
 
-        <div class="page-head">
-
-            <h1 id="pageTitle">
-                الصفحة
+            <h1 id="sectionTitle">
+                القسم
             </h1>
 
             <p>
-                Fantasy Store
+                FANTASY STORE
             </p>
 
         </div>
 
-
         <iframe
-            id="pageFrame"
-            class="page-frame">
+            id="contentFrame"
+            class="frame">
         </iframe>
 
     </section>
-
 
 </main>
 
 
 <script>
 
-/* ================= عرض الصفحة الرئيسية ================= */
+/* إظهار الرئيسية */
 
-function showHome(button){
+function home(button){
 
-    document.getElementById("homeContent").style.display =
-        "block";
+    document.getElementById("homePage").style.display = "block";
+    document.getElementById("sectionPage").style.display = "none";
 
-    document.getElementById("pageContent").style.display =
-        "none";
-
-
-    document.querySelectorAll(".nav-btn")
-        .forEach(function(btn){
-
-            btn.classList.remove("active");
-
-        });
-
+    document.querySelectorAll(".nav-btn").forEach(function(btn){
+        btn.classList.remove("active");
+    });
 
     if(button){
-
         button.classList.add("active");
-
     }else{
-
-        document.querySelector(".nav-btn")
-            .classList.add("active");
-
+        document.querySelector(".nav-btn").classList.add("active");
     }
-
 }
 
 
-/* ================= فتح قسم ================= */
+/* فتح أي قسم */
 
-function openPage(title,url,button){
+function openSection(title,url,button){
 
-    document.getElementById("homeContent").style.display =
-        "none";
+    document.getElementById("homePage").style.display = "none";
+    document.getElementById("sectionPage").style.display = "block";
 
-    document.getElementById("pageContent").style.display =
-        "block";
+    document.getElementById("sectionTitle").textContent = title;
 
+    document.getElementById("contentFrame").src = url;
 
-    document.getElementById("pageTitle").textContent =
-        title;
-
-
-    document.getElementById("pageFrame").src =
-        url;
-
-
-    document.querySelectorAll(".nav-btn")
-        .forEach(function(btn){
-
-            btn.classList.remove("active");
-
-        });
-
+    document.querySelectorAll(".nav-btn").forEach(function(btn){
+        btn.classList.remove("active");
+    });
 
     if(button){
-
         button.classList.add("active");
-
-    }else{
-
-        document.querySelectorAll(".nav-btn")
-            .forEach(function(btn){
-
-                if(
-                    btn.textContent.trim().includes(title)
-                ){
-
-                    btn.classList.add("active");
-
-                }
-
-            });
-
     }
-
 }
 
 
-/* ================= زر الخروج ================= */
+/* خروج = رجوع للرئيسية فقط */
 
 function goBack(){
 
-    /*
-      مش تسجيل خروج.
-      يرجعك للصفحة الرئيسية فقط.
-    */
-
-    showHome();
+    home();
 
 }
-
-
-/* ================= تشغيل ================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        showHome();
-
-    }
-);
 
 </script>
 
