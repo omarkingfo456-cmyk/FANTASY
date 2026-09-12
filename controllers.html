@@ -1,265 +1,550 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صيانة دراعات - Fantasy Store</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صيانة أدرعة - FANTASY STORE</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<style>
+*{box-sizing:border-box}
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-            background: #0b0b0b;
-            color: white;
-            transition: 0.3s;
-        }
+:root{
+  --bg:#071329;
+  --panel:#0c1d3d;
+  --panel2:#102750;
+  --text:#f2f6ff;
+  --muted:#8ba5d2;
+  --blue:#078dff;
+  --cyan:#14c5e8;
+  --line:#174a91;
+  --danger:#e84c72;
+}
 
-        .top-bar {
-            height: 70px;
-            background: #151515;
-            border-bottom: 1px solid #333;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 25px;
-        }
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:Tahoma,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:.3s;
+}
 
-        .cloud {
-            color: #35d07f;
-            font-size: 16px;
-            font-weight: bold;
-        }
+body.light{
+  --bg:#edf3fc;
+  --panel:#fff;
+  --panel2:#e8f0fc;
+  --text:#10244a;
+  --muted:#536b92;
+  --line:#c3d4ec;
+}
 
-        .title {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 24px;
-            color: #f5c542;
-            white-space: nowrap;
-        }
+.top-bar{
+  height:75px;
+  background:var(--panel);
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 25px;
+  gap:15px;
+}
 
-        .menu {
-            position: absolute;
-            right: 20px;
-            top: 90px;
-            width: 220px;
-            background: #151515;
-            border: 1px solid #333;
-            border-radius: 14px;
-            padding: 10px;
-        }
+.brand{
+  font-size:22px;
+  font-weight:bold;
+  color:var(--text);
+}
 
-        .menu h3 {
-            text-align: center;
-            color: #f5c542;
-            margin: 5px 0 10px;
-        }
+.brand span{color:var(--cyan)}
 
-        .menu button {
-            width: 100%;
-            padding: 12px 8px;
-            margin: 4px 0;
-            border: none;
-            border-radius: 8px;
-            background: #222;
-            color: white;
-            font-size: 15px;
-            cursor: pointer;
-            text-align: right;
-        }
+.cloud{
+  color:#35d07f;
+  font-size:14px;
+  font-weight:bold;
+}
 
-        .menu button:hover {
-            background: #f5c542;
-            color: #111;
-        }
+.layout{
+  display:flex;
+  direction:ltr;
+  min-height:calc(100vh - 75px);
+}
 
-        .content {
-            margin-right: 270px;
-            padding: 100px 30px;
-            text-align: center;
-        }
+.content{
+  direction:rtl;
+  flex:1;
+  min-width:0;
+  padding:35px;
+}
 
-        .content h2 {
-            color: #f5c542;
-            font-size: 28px;
-        }
+.menu{
+  direction:rtl;
+  width:270px;
+  flex-shrink:0;
+  background:var(--panel);
+  border-left:1px solid var(--line);
+  padding:20px 15px;
+}
 
-        .content p {
-            color: #aaa;
-            font-size: 17px;
-        }
+.menu h3{
+  color:var(--cyan);
+  text-align:center;
+  margin:0 0 20px;
+  font-size:21px;
+}
 
-        .bottom-left {
-            position: fixed;
-            left: 20px;
-            bottom: 20px;
-            display: flex;
-            gap: 10px;
-        }
+.menu button{
+  display:block;
+  width:100%;
+  padding:15px 12px;
+  margin:7px 0;
+  border:1px solid transparent;
+  border-radius:10px;
+  background:var(--panel2);
+  color:var(--text);
+  font-size:15px;
+  cursor:pointer;
+  text-align:right;
+  transition:.2s;
+}
 
-        .bottom-left button {
-            width: 48px;
-            height: 48px;
-            border: 1px solid #444;
-            border-radius: 50%;
-            background: #151515;
-            color: white;
-            font-size: 21px;
-            cursor: pointer;
-        }
+.menu button:hover,
+.menu button.active{
+  background:linear-gradient(90deg,#1260c7,#087dff);
+  border-color:#18bfff;
+  color:white;
+}
 
-        .bottom-left button:hover {
-            border-color: #f5c542;
-        }
+.page{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:30px;
+  min-height:500px;
+}
 
-        body.light {
-            background: #f1f1f1;
-            color: #111;
-        }
+.page h1{
+  margin-top:0;
+  color:var(--cyan);
+  font-size:28px;
+}
 
-        body.light .top-bar,
-        body.light .menu,
-        body.light .bottom-left button {
-            background: white;
-            border-color: #ccc;
-        }
+.page p{
+  color:var(--muted);
+  line-height:1.9;
+}
 
-        body.light .menu button {
-            background: #eee;
-            color: #111;
-        }
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  margin-top:25px;
+}
 
-        body.light .menu button:hover {
-            background: #f5c542;
-        }
-    </style>
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.field label{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.field input,
+.field select{
+  width:100%;
+  padding:13px;
+  border-radius:9px;
+  border:1px solid var(--line);
+  background:var(--panel2);
+  color:var(--text);
+  font-size:15px;
+}
+
+.full{grid-column:1/-1}
+
+.btn{
+  border:0;
+  border-radius:9px;
+  padding:13px 22px;
+  background:linear-gradient(90deg,#087cff,#10b9d8);
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+  margin-top:22px;
+}
+
+.btn:hover{opacity:.85}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px;
+  margin-top:25px;
+}
+
+.info-card{
+  background:var(--panel2);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:22px;
+}
+
+.info-card h3{
+  color:var(--cyan);
+  margin-top:0;
+}
+
+.bottom-left{
+  position:fixed;
+  left:20px;
+  bottom:20px;
+  display:flex;
+  gap:10px;
+  direction:ltr;
+}
+
+.bottom-left button{
+  width:48px;
+  height:48px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  background:var(--panel);
+  color:var(--text);
+  font-size:21px;
+  cursor:pointer;
+}
+
+@media(max-width:750px){
+  .top-bar{height:auto;min-height:70px;padding:15px;flex-wrap:wrap}
+  .brand{font-size:17px}
+  .cloud{font-size:11px}
+  .layout{display:flex;flex-direction:column}
+  .menu{width:100%;border-left:0;border-bottom:1px solid var(--line)}
+  .menu button{display:inline-block;width:calc(50% - 8px);margin:4px}
+  .content{padding:18px}
+  .page{padding:20px}
+  .form-grid,.cards{grid-template-columns:1fr}
+}
+</style>
 </head>
 
 <body>
 
-    <div class="top-bar">
+<header class="top-bar">
+  <div class="brand">
+    🎮 <span>FANTASY STORE</span>
+  </div>
 
-        <div class="cloud">
-            متصل بالسحابة (مباشر) ✅
+  <div class="cloud">متصل بالسحابة (مباشر) ✅</div>
+</header>
+
+<div class="layout">
+
+  <!-- المحتوى اللي على الشمال -->
+  <main class="content">
+    <div class="page" id="pageContent">
+      <h1>مرحبًا بك في صيانة أدرعة</h1>
+      <p>اختار أي قائمة من القائمة الجانبية عشان تبدأ العمل.</p>
+
+      <div class="cards">
+        <div class="info-card">
+          <h3>🧾 الفواتير</h3>
+          <p>إنشاء وتعديل ومتابعة فواتير الصيانة.</p>
         </div>
 
-        <div class="title">
-            مرحبًا بك في صيانة الدراعات
+        <div class="info-card">
+          <h3>🔧 قطع الغيار</h3>
+          <p>إدارة قطع غيار دراعات PS4 وPS5.</p>
         </div>
-
+      </div>
     </div>
+  </main>
 
-<div class="menu">
+  <!-- القائمة الجانبية -->
+  <aside class="menu">
+    <h3>قائمة صيانة أدرعة</h3>
 
-    <h3>القائمة</h3>
-
-    <button onclick="window.location.href='new-invoice.html'">
-        🧾 فاتورة جديدة
+    <button onclick="showPage('newInvoice',this)">
+      🧾 فاتورة جديدة
     </button>
 
-    <button onclick="editInvoice()">
-        ✏️ تعديل فاتورة
+    <button onclick="showPage('editInvoice',this)">
+      ✏️ تعديل فاتورة
     </button>
 
-    <button onclick="priceTable()">
-        💰 جدول أسعار
+    <button onclick="showPage('prices',this)">
+      💰 جدول أسعار
     </button>
 
-<button onclick="window.location.href='spare-parts.html'">
-    🔧 قطع غيار
-</button>
-
-    <button onclick="invoiceHistory()">
-        📋 سجل الفواتير
+    <button onclick="showPage('parts',this)">
+      🔧 قطع غيار
     </button>
 
-    <button onclick="pendingInvoices()">
-        ⏳ الفواتير المعلقة
+    <button onclick="showPage('history',this)">
+      📋 سجل الفواتير
     </button>
 
-    <button onclick="delivery()">
-        📦 الاستلام والتسليم
+    <button onclick="showPage('pending',this)">
+      ⏳ الفواتير المعلقة
     </button>
 
-    <button onclick="saleInvoice()">
-        🛒 فاتورة بيع
+    <button onclick="showPage('delivery',this)">
+      📦 الاستلام والتسليم
     </button>
 
-  <button onclick="window.location.href='settings.html'">
-    ⚙️ الإعدادات
-</button>
+    <button onclick="showPage('sales',this)">
+      🛒 فاتورة بيع
+    </button>
+
+    <button onclick="showPage('settings',this)">
+      ⚙️ الإعدادات
+    </button>
+  </aside>
+
 </div>
 
-    <div class="content">
+<div class="bottom-left">
+  <button onclick="logout()" title="خروج">🚪</button>
+  <button onclick="toggleLight()" title="تغيير الإضاءة" id="lightBtn">🌙</button>
+</div>
 
-        <h2>صيانة دراعات</h2>
+<script>
+const pageContent = document.getElementById("pageContent");
 
-        <p>
-            اختر أحد الأقسام من القائمة لبدء العمل.
-        </p>
+function showPage(page, button){
 
-    </div>
+  document.querySelectorAll(".menu button")
+    .forEach(b => b.classList.remove("active"));
 
-    <div class="bottom-left">
+  if(button) button.classList.add("active");
 
-        <button onclick="logout()" title="خروج">🚪</button>
+  const pages = {
 
-        <button onclick="toggleLight()" title="تغيير الإضاءة">🌙</button>
+    newInvoice: `
+      <h1>🧾 فاتورة صيانة جديدة</h1>
+      <p>إنشاء فاتورة جديدة لصيانة أدرعة البلايستيشن.</p>
 
-    </div>
+      <form onsubmit="saveInvoice(event)">
+        <div class="form-grid">
 
-    <script>
+          <div class="field">
+            <label>نوع الفاتورة</label>
+            <select id="invoiceType">
+              <option>قطاعي</option>
+              <option>تجاري</option>
+            </select>
+          </div>
 
-        function logout() {
-            window.location.href = "index.html";
-        }
+          <div class="field">
+            <label>كود الفاتورة</label>
+            <input id="invoiceCode" placeholder="كود الفاتورة" required>
+          </div>
 
-        function toggleLight() {
-            document.body.classList.toggle("light");
-        }
+          <div class="field">
+            <label>التاريخ</label>
+            <input id="invoiceDate" type="date" required>
+          </div>
 
-      
-        function editInvoice() {
-            alert("تعديل فاتورة");
-        }
+          <div class="field">
+            <label>اسم العميل</label>
+            <input id="customerName" placeholder="اسم العميل" required>
+          </div>
 
-        function priceTable() {
-            alert("جدول أسعار");
-        }
+          <div class="field">
+            <label>رقم الهاتف</label>
+            <input id="customerPhone" type="tel" placeholder="رقم الهاتف">
+          </div>
 
-        function spareParts() {
-            alert("قطع غيار");
-        }
+          <div class="field">
+            <label>عدد دراعات PS4</label>
+            <input id="ps4Count" type="number" min="0" value="0">
+          </div>
 
-        function invoiceHistory() {
-            alert("سجل الفواتير");
-        }
+          <div class="field">
+            <label>عدد دراعات PS5</label>
+            <input id="ps5Count" type="number" min="0" value="0">
+          </div>
 
-        function pendingInvoices() {
-            alert("الفواتير المعلقة");
-        }
+        </div>
 
-        function delivery() {
-            alert("الاستلام والتسليم");
-        }
+        <button class="btn" type="submit">حفظ الفاتورة</button>
+      </form>
+    `,
 
-        function saleInvoice() {
-            alert("فاتورة بيع");
-        }
+    editInvoice: `
+      <h1>✏️ تعديل فاتورة</h1>
+      <p>ابحث عن الفاتورة اللي عايز تعدلها.</p>
 
-        function settings() {
-            alert("الإعدادات");
-        }
+      <div class="form-grid">
+        <div class="field">
+          <label>كود الفاتورة</label>
+          <input placeholder="اكتب كود الفاتورة">
+        </div>
+      </div>
 
-    </script>
+      <button class="btn" onclick="alert('سيتم تجهيز تعديل الفاتورة')">
+        بحث عن الفاتورة
+      </button>
+    `,
+
+    prices: `
+      <h1>💰 جدول الأسعار</h1>
+      <p>إدارة أسعار خدمات صيانة الأدرعة.</p>
+
+      <div class="cards">
+        <div class="info-card">
+          <h3>PS4</h3>
+          <p>أسعار صيانة دراعات بلايستيشن 4.</p>
+        </div>
+
+        <div class="info-card">
+          <h3>PS5</h3>
+          <p>أسعار صيانة دراعات بلايستيشن 5.</p>
+        </div>
+      </div>
+    `,
+
+    parts: `
+      <h1>🔧 قطع الغيار</h1>
+      <p>إدارة قطع غيار الخاصة بدراعات فور وفايف.</p>
+
+      <div class="cards">
+        <div class="info-card">
+          <h3>قطع غيار PS4</h3>
+          <p>إضافة وتعديل وحذف قطع غيار دراعات PS4.</p>
+          <button class="btn" onclick="alert('إضافة قطعة PS4')">
+            إضافة قطعة
+          </button>
+        </div>
+
+        <div class="info-card">
+          <h3>قطع غيار PS5</h3>
+          <p>إضافة وتعديل وحذف قطع غيار دراعات PS5.</p>
+          <button class="btn" onclick="alert('إضافة قطعة PS5')">
+            إضافة قطعة
+          </button>
+        </div>
+      </div>
+    `,
+
+    history: `
+      <h1>📋 سجل الفواتير</h1>
+      <p>هنا هتظهر جميع الفواتير المحفوظة.</p>
+      <div class="info-card">
+        لا توجد فواتير محفوظة حاليًا.
+      </div>
+    `,
+
+    pending: `
+      <h1>⏳ الفواتير المعلقة</h1>
+      <p>الفواتير التي لم يتم تسليمها أو الانتهاء منها.</p>
+      <div class="info-card">
+        لا توجد فواتير معلقة حاليًا.
+      </div>
+    `,
+
+    delivery: `
+      <h1>📦 الاستلام والتسليم</h1>
+      <p>متابعة الأجهزة والأدرعة المستلمة والجاهزة للتسليم.</p>
+      <div class="info-card">
+        لا توجد عمليات استلام أو تسليم مسجلة حاليًا.
+      </div>
+    `,
+
+    sales: `
+      <h1>🛒 فاتورة بيع</h1>
+      <p>إنشاء فاتورة بيع لقطع الغيار والإكسسوارات.</p>
+
+      <div class="form-grid">
+        <div class="field">
+          <label>اسم العميل</label>
+          <input placeholder="اسم العميل">
+        </div>
+
+        <div class="field">
+          <label>المنتج</label>
+          <input placeholder="اسم المنتج">
+        </div>
+      </div>
+
+      <button class="btn" onclick="alert('تم تجهيز فاتورة البيع')">
+        حفظ فاتورة البيع
+      </button>
+    `,
+
+    settings: `
+      <h1>⚙️ الإعدادات</h1>
+      <p>تحكم في إعدادات نظام صيانة أدرعة FANTASY STORE.</p>
+
+      <div class="info-card">
+        <h3>الحالة الحالية</h3>
+        <p>✅ متصل - بياناتك بتتحفظ تلقائيًا على هذا الجهاز.</p>
+        <button class="btn" onclick="saveSettings()">
+          حفظ الآن
+        </button>
+      </div>
+    `
+  };
+
+  pageContent.innerHTML = pages[page] || "<h1>الصفحة غير موجودة</h1>";
+
+  if(page === "newInvoice"){
+    document.getElementById("invoiceDate").value =
+      new Date().toISOString().split("T")[0];
+  }
+}
+
+function saveInvoice(event){
+  event.preventDefault();
+
+  const invoice = {
+    type: document.getElementById("invoiceType").value,
+    code: document.getElementById("invoiceCode").value,
+    date: document.getElementById("invoiceDate").value,
+    customer: document.getElementById("customerName").value,
+    phone: document.getElementById("customerPhone").value,
+    ps4: document.getElementById("ps4Count").value,
+    ps5: document.getElementById("ps5Count").value
+  };
+
+  const invoices = JSON.parse(
+    localStorage.getItem("fantasyInvoices") || "[]"
+  );
+
+  invoices.push(invoice);
+
+  localStorage.setItem("fantasyInvoices",JSON.stringify(invoices));
+
+  alert("تم حفظ الفاتورة بنجاح ✅");
+}
+
+function saveSettings(){
+  localStorage.setItem("fantasySettingsSaved","true");
+  alert("تم الحفظ بنجاح ✅");
+}
+
+function logout(){
+  window.location.href="index.html";
+}
+
+function toggleLight(){
+  document.body.classList.toggle("light");
+
+  const isLight = document.body.classList.contains("light");
+
+  document.getElementById("lightBtn").textContent =
+    isLight ? "☀️" : "🌙";
+
+  localStorage.setItem("fantasyTheme",isLight ? "light" : "dark");
+}
+
+if(localStorage.getItem("fantasyTheme")==="light"){
+  document.body.classList.add("light");
+  document.getElementById("lightBtn").textContent="☀️";
+}
+</script>
 
 </body>
 </html>
-
