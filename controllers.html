@@ -546,6 +546,85 @@ if(localStorage.getItem("fantasyTheme")==="light"){
 }
 </script>
 }
+function addPart(consoleType) {
+  pageContent.innerHTML = `
+    <h1>إضافة قطعة غيار - ${consoleType}</h1>
 
+    <p>أدخل بيانات قطعة الغيار الجديدة.</p>
+
+    <div class="form-grid">
+
+      <div class="field full">
+        <label>اسم القطعة</label>
+        <input id="partName" placeholder="اسم القطعة">
+      </div>
+
+      <div class="field">
+        <label>السعر القطاعي</label>
+        <input id="partRetail" type="number" placeholder="السعر القطاعي">
+      </div>
+
+      <div class="field">
+        <label>السعر التجاري</label>
+        <input id="partCommercial" type="number" placeholder="السعر التجاري">
+      </div>
+
+      <div class="field">
+        <label>العدد (اختياري)</label>
+        <input id="partQuantity" type="number" min="0" value="0">
+      </div>
+
+      <div class="field">
+        <label>نوع القطعة</label>
+        <select id="partType">
+          <option value="مفردة">قطعة واحدة</option>
+          <option value="مزدوجة">مزدوجة (ترقيم/امامي)</option>
+        </select>
+      </div>
+
+    </div>
+
+    <button class="btn" onclick="savePart('${consoleType}')">
+      إضافة
+    </button>
+
+    <button class="btn" onclick="showPage('parts')">
+      إلغاء
+    </button>
+  `;
+}
+
+function savePart(consoleType) {
+  const name = document.getElementById("partName").value.trim();
+  const retail = document.getElementById("partRetail").value;
+  const commercial = document.getElementById("partCommercial").value;
+  const quantity = document.getElementById("partQuantity").value;
+  const type = document.getElementById("partType").value;
+
+  if (!name || retail === "" || commercial === "") {
+    alert("من فضلك املأ اسم القطعة والأسعار");
+    return;
+  }
+
+  const parts = JSON.parse(
+    localStorage.getItem("fantasyParts") || "[]"
+  );
+
+  parts.push({
+    id: Date.now(),
+    console: consoleType,
+    name: name,
+    retail: retail,
+    commercial: commercial,
+    quantity: quantity || 0,
+    type: type
+  });
+
+  localStorage.setItem("fantasyParts", JSON.stringify(parts));
+
+  alert("تمت إضافة القطعة بنجاح ✅");
+
+  showPage("parts");
+}
 </body>
 </html>
