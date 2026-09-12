@@ -6,51 +6,870 @@
 <title>FANTASY STORE</title>
 
 <style>
+*{box-sizing:border-box}
+
 body{
   margin:0;
-  min-height:100vh;
-  background:#06152d;
-  color:white;
   font-family:Tahoma,Arial,sans-serif;
+  background:#020b1d;
+  color:#fff;
+}
+
+.app{
+  min-height:100vh;
+  display:flex;
+  flex-direction:row;
+}
+
+.sidebar{
+  width:280px;
+  flex-shrink:0;
+  background:#07152e;
+  border-left:1px solid #1d4275;
+  padding:20px 15px;
+}
+
+.logo{
   text-align:center;
-  padding:40px 15px;
+  font-size:25px;
+  font-weight:bold;
+  color:#49a6ff;
+  padding:15px 5px 25px;
 }
 
-h1{
-  color:#4da6ff;
+.menu{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
 
-button{
-  display:block;
+.menu button{
   width:100%;
-  max-width:350px;
-  margin:15px auto;
-  padding:15px;
+  border:1px solid #1d4275;
+  border-radius:9px;
+  background:#0b2144;
+  color:#fff;
+  padding:14px 12px;
+  text-align:right;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.menu button:hover,
+.menu button.active{
+  background:#087cf0;
+  border-color:#49a6ff;
+}
+
+.sidebar-footer{
+  display:flex;
+  gap:8px;
+  margin-top:25px;
+}
+
+.sidebar-footer button{
+  flex:1;
+  border:1px solid #1d4275;
+  border-radius:8px;
+  background:#0b2144;
+  color:white;
+  padding:10px 5px;
+  cursor:pointer;
+}
+
+.main{
+  flex:1;
+  min-width:0;
+  padding:25px;
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  border-bottom:1px solid #1d4275;
+  padding-bottom:20px;
+  margin-bottom:25px;
+}
+
+.header h1{
+  margin:0;
+  font-size:25px;
+}
+
+.status{
+  color:#48e69a;
+  font-size:13px;
+}
+
+.page-title{
+  margin:0 0 10px;
+  font-size:28px;
+}
+
+.page-subtitle{
+  color:#9fb5d3;
+  margin-bottom:25px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+.card{
+  background:#07152e;
+  border:1px solid #1d4275;
+  border-radius:15px;
+  padding:25px;
+  cursor:pointer;
+}
+
+.card:hover{
+  border-color:#168cff;
+  background:#0b2144;
+}
+
+.card-icon{
+  font-size:42px;
+  margin-bottom:15px;
+}
+
+.card h3{
+  margin:0 0 10px;
+}
+
+.card p{
+  margin:0;
+  color:#9fb5d3;
+}
+
+.panel{
+  background:#07152e;
+  border:1px solid #1d4275;
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+.panel h3{
+  margin-top:0;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:15px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.field label{
+  color:#bcd0eb;
+  font-size:14px;
+}
+
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #245084;
+  background:#020b1d;
+  color:#fff;
+  outline:none;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  border-color:#168cff;
+}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:20px;
+}
+
+.btn{
   border:0;
   border-radius:8px;
-  background:#168cff;
-  color:white;
-  font-size:16px;
+  padding:11px 18px;
+  background:#087cf0;
+  color:#fff;
+  cursor:pointer;
+}
+
+.btn:hover{
+  filter:brightness(1.2);
+}
+
+.btn.green{background:#16a66b}
+.btn.red{background:#d93636}
+.btn.gray{background:#334967}
+
+.table-container{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  min-width:650px;
+  border-collapse:collapse;
+}
+
+th,td{
+  padding:12px;
+  border-bottom:1px solid #1d4275;
+  text-align:right;
+}
+
+th{
+  background:#0b2144;
+  color:#8ec5ff;
+}
+
+.empty{
+  text-align:center;
+  padding:30px;
+  color:#9fb5d3;
+}
+
+@media(max-width:800px){
+  .app{
+    flex-direction:column;
+  }
+
+  .sidebar{
+    width:100%;
+    border-left:0;
+    border-bottom:1px solid #1d4275;
+  }
+
+  .menu{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .main{
+    padding:15px;
+  }
+
+  .header{
+    align-items:flex-start;
+    flex-direction:column;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<h1>FANTASY STORE</h1>
-<p>صفحة صيانة الأدرعة تعمل بنجاح</p>
+<div class="app">
 
-<button onclick="alert('فاتورة جديدة تعمل')">
-فاتورة جديدة
-</button>
+  <aside class="sidebar">
+    <div class="logo">FANTASY STORE</div>
 
-<button onclick="alert('قطع الغيار تعمل')">
-قطع الغيار
-</button>
+    <div class="menu">
+      <button onclick="showPage('newInvoice',this)">🧾 فاتورة جديدة</button>
+      <button onclick="showPage('editInvoice',this)">✏️ تعديل فاتورة</button>
+      <button onclick="showPage('prices',this)">💰 جدول الأسعار</button>
+      <button onclick="showPage('parts',this)">🔧 قطع الغيار</button>
+      <button onclick="showPage('invoiceLog',this)">📋 سجل الفواتير</button>
+      <button onclick="showPage('pending',this)">⏳ الفواتير المعلقة</button>
+      <button onclick="showPage('delivery',this)">📦 الاستلام والتسليم</button>
+      <button onclick="showPage('sales',this)">🛒 فاتورة بيع</button>
+      <button onclick="showPage('settings',this)">⚙️ الإعدادات</button>
+    </div>
 
-<button onclick="alert('الإعدادات تعمل')">
-الإعدادات
-</button>
+    <div class="sidebar-footer">
+      <button onclick="toggleTheme()">☀️/🌙</button>
+      <button onclick="goHome()">الرئيسية</button>
+    </div>
+  </aside>
 
-</body>
-</html>
+  <main class="main">
+    <div class="header">
+      <h1>مرحبًا بك في صيانة الأدرعة</h1>
+      <div class="status">● متصل - الحفظ تلقائي</div>
+    </div>
+
+    <div id="content"></div>
+  </main>
+
+</div>
+
+<script>
+const KEY = "fantasy_store_complete_data";
+
+let data = JSON.parse(localStorage.getItem(KEY)) || {
+  invoices:[],
+  parts:[],
+  prices:[],
+  sales:[],
+  settings:{
+    phone:"",
+    storeName:"FANTASY STORE"
+  }
+};
+
+function save(){
+  localStorage.setItem(KEY,JSON.stringify(data));
+}
+
+function esc(value){
+  return String(value ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function showPage(page,button){
+  document.querySelectorAll(".menu button").forEach(b=>{
+    b.classList.remove("active");
+  });
+
+  if(button) button.classList.add("active");
+
+  const content = document.getElementById("content");
+
+  if(page==="newInvoice") content.innerHTML = newInvoicePage();
+  if(page==="editInvoice") content.innerHTML = invoiceListPage(true);
+  if(page==="prices") content.innerHTML = pricesPage();
+  if(page==="parts") content.innerHTML = partsPage();
+  if(page==="invoiceLog") content.innerHTML = invoiceListPage(false);
+  if(page==="pending") content.innerHTML = pendingPage();
+  if(page==="delivery") content.innerHTML = deliveryPage();
+  if(page==="sales") content.innerHTML = salesPage();
+  if(page==="settings") content.innerHTML = settingsPage();
+}
+
+function goHome(){
+  document.querySelectorAll(".menu button").forEach(b=>b.classList.remove("active"));
+
+  document.getElementById("content").innerHTML = `
+    <h2 class="page-title">لوحة التحكم</h2>
+    <p class="page-subtitle">اختار القسم المطلوب من القائمة الجانبية.</p>
+
+    <div class="cards">
+      <div class="card" onclick="showPage('newInvoice')">
+        <div class="card-icon">🎮</div>
+        <h3>صيانة دراعات</h3>
+        <p>إنشاء فواتير صيانة جديدة.</p>
+      </div>
+
+      <div class="card" onclick="showPage('parts')">
+        <div class="card-icon">🔧</div>
+        <h3>قطع الغيار</h3>
+        <p>إضافة وإدارة قطع الغيار.</p>
+      </div>
+
+      <div class="card" onclick="showPage('prices')">
+        <div class="card-icon">💰</div>
+        <h3>جدول الأسعار</h3>
+        <p>حفظ أسعار الخدمات.</p>
+      </div>
+    </div>
+  `;
+}
+
+function newInvoicePage(){
+  return `
+    <h2 class="page-title">فاتورة صيانة جديدة</h2>
+    <p class="page-subtitle">أدخل البيانات ثم اضغط حفظ الفاتورة.</p>
+
+    <div class="panel">
+      <div class="form-grid">
+        <div class="field">
+          <label>نوع الفاتورة</label>
+          <select id="invType">
+            <option>قطاعي</option>
+            <option>تجاري</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>كود الفاتورة</label>
+          <input id="invCode" value="INV-${Date.now()}">
+        </div>
+
+        <div class="field">
+          <label>التاريخ</label>
+          <input id="invDate" type="date" value="${new Date().toISOString().slice(0,10)}">
+        </div>
+
+        <div class="field">
+          <label>اسم العميل</label>
+          <input id="invCustomer" placeholder="اسم العميل">
+        </div>
+
+        <div class="field">
+          <label>رقم الهاتف</label>
+          <input id="invPhone" placeholder="رقم الهاتف">
+        </div>
+
+        <div class="field">
+          <label>عدد دراعات PS4</label>
+          <input id="invPs4" type="number" min="0" value="0">
+        </div>
+
+        <div class="field">
+          <label>عدد دراعات PS5</label>
+          <input id="invPs5" type="number" min="0" value="0">
+        </div>
+
+        <div class="field">
+          <label>الحالة</label>
+          <select id="invStatus">
+            <option>جديدة</option>
+            <option>معلقة</option>
+            <option>تم التسليم</option>
+          </select>
+        </div>
+
+        <div class="field" style="grid-column:1/-1">
+          <label>الملاحظات</label>
+          <textarea id="invNotes" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn green" onclick="saveInvoice()">حفظ الفاتورة</button>
+        <button class="btn gray" onclick="goHome()">إلغاء</button>
+      </div>
+    </div>
+  `;
+}
+
+function saveInvoice(){
+  const customer = document.getElementById("invCustomer").value.trim();
+
+  if(!customer){
+    alert("اكتب اسم العميل");
+    return;
+  }
+
+  data.invoices.push({
+    id:Date.now(),
+    type:document.getElementById("invType").value,
+    code:document.getElementById("invCode").value,
+    date:document.getElementById("invDate").value,
+    customer:customer,
+    phone:document.getElementById("invPhone").value,
+    ps4:Number(document.getElementById("invPs4").value||0),
+    ps5:Number(document.getElementById("invPs5").value||0),
+    status:document.getElementById("invStatus").value,
+    notes:document.getElementById("invNotes").value
+  });
+
+  save();
+  alert("تم حفظ الفاتورة");
+  showPage("invoiceLog");
+}
+
+function invoiceListPage(editMode){
+  let list = data.invoices;
+
+  if(!list.length){
+    return `
+      <h2 class="page-title">${editMode?"تعديل الفواتير":"سجل الفواتير"}</h2>
+      <div class="panel empty">لا توجد فواتير محفوظة.</div>
+    `;
+  }
+
+  return `
+    <h2 class="page-title">${editMode?"تعديل الفواتير":"سجل الفواتير"}</h2>
+
+    <div class="panel">
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>الكود</th>
+              <th>التاريخ</th>
+              <th>العميل</th>
+              <th>الهاتف</th>
+              <th>PS4</th>
+              <th>PS5</th>
+              <th>الحالة</th>
+              <th>الإجراء</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            ${list.map(inv=>`
+              <tr>
+                <td>${esc(inv.code)}</td>
+                <td>${esc(inv.date)}</td>
+                <td>${esc(inv.customer)}</td>
+                <td>${esc(inv.phone)}</td>
+                <td>${inv.ps4}</td>
+                <td>${inv.ps5}</td>
+                <td>${esc(inv.status)}</td>
+                <td>
+                  <button class="btn" onclick="editInvoice(${inv.id})">تعديل</button>
+                  <button class="btn red" onclick="deleteInvoice(${inv.id})">حذف</button>
+                </td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+function editInvoice(id){
+  const inv = data.invoices.find(x=>x.id===id);
+  if(!inv) return;
+
+  document.getElementById("content").innerHTML = `
+    <h2 class="page-title">تعديل الفاتورة</h2>
+
+    <div class="panel">
+      <div class="form-grid">
+        <div class="field">
+          <label>الكود</label>
+          <input id="eCode" value="${esc(inv.code)}">
+        </div>
+
+        <div class="field">
+          <label>التاريخ</label>
+          <input id="eDate" type="date" value="${esc(inv.date)}">
+        </div>
+
+        <div class="field">
+          <label>اسم العميل</label>
+          <input id="eCustomer" value="${esc(inv.customer)}">
+        </div>
+
+        <div class="field">
+          <label>الهاتف</label>
+          <input id="ePhone" value="${esc(inv.phone)}">
+        </div>
+
+        <div class="field">
+          <label>PS4</label>
+          <input id="ePs4" type="number" value="${inv.ps4}">
+        </div>
+
+        <div class="field">
+          <label>PS5</label>
+          <input id="ePs5" type="number" value="${inv.ps5}">
+        </div>
+
+        <div class="field">
+          <label>الحالة</label>
+          <select id="eStatus">
+            <option ${inv.status==="جديدة"?"selected":""}>جديدة</option>
+            <option ${inv.status==="معلقة"?"selected":""}>معلقة</option>
+            <option ${inv.status==="تم التسليم"?"selected":""}>تم التسليم</option>
+          </select>
+        </div>
+
+        <div class="field" style="grid-column:1/-1">
+          <label>الملاحظات</label>
+          <textarea id="eNotes">${esc(inv.notes)}</textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn green" onclick="updateInvoice(${id})">حفظ التعديل</button>
+        <button class="btn gray" onclick="showPage('editInvoice')">إلغاء</button>
+      </div>
+    </div>
+  `;
+}
+
+function updateInvoice(id){
+  const inv = data.invoices.find(x=>x.id===id);
+  if(!inv) return;
+
+  inv.code = document.getElementById("eCode").value;
+  inv.date = document.getElementById("eDate").value;
+  inv.customer = document.getElementById("eCustomer").value;
+  inv.phone = document.getElementById("ePhone").value;
+  inv.ps4 = Number(document.getElementById("ePs4").value||0);
+  inv.ps5 = Number(document.getElementById("ePs5").value||0);
+  inv.status = document.getElementById("eStatus").value;
+  inv.notes = document.getElementById("eNotes").value;
+
+  save();
+  alert("تم تعديل الفاتورة");
+  showPage("editInvoice");
+}
+
+function deleteInvoice(id){
+  if(!confirm("هل تريد حذف الفاتورة؟")) return;
+
+  data.invoices = data.invoices.filter(x=>x.id!==id);
+  save();
+  showPage("invoiceLog");
+}
+
+function pricesPage(){
+  return `
+    <h2 class="page-title">جدول الأسعار</h2>
+    <p class="page-subtitle">إضافة أسعار خدمات الصيانة.</p>
+
+    <div class="panel">
+      <div class="form-grid">
+        <div class="field">
+          <label>اسم الخدمة</label>
+          <input id="priceName" placeholder="مثال: تغيير أنالوج">
+        </div>
+
+        <div class="field">
+          <label>قطاعي</label>
+          <input id="priceRetail" type="number" value="0">
+        </div>
+
+        <div class="field">
+          <label>تجاري</label>
+          <input id="priceWholesale" type="number" value="0">
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn green" onclick="addPrice()">حفظ السعر</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      ${data.prices.length?`
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>الخدمة</th>
+              <th>قطاعي</th>
+              <th>تجاري</th>
+              <th>حذف</th>
+            </tr>
+            ${data.prices.map(p=>`
+              <tr>
+                <td>${esc(p.name)}</td>
+                <td>${p.retail}</td>
+                <td>${p.wholesale}</td>
+                <td><button class="btn red" onclick="deletePrice(${p.id})">حذف</button></td>
+              </tr>
+            `).join("")}
+          </table>
+        </div>
+      `:`<div class="empty">لا توجد أسعار محفوظة.</div>`}
+    </div>
+  `;
+}
+
+function addPrice(){
+  const name = document.getElementById("priceName").value.trim();
+
+  if(!name){
+    alert("اكتب اسم الخدمة");
+    return;
+  }
+
+  data.prices.push({
+    id:Date.now(),
+    name:name,
+    retail:Number(document.getElementById("priceRetail").value||0),
+    wholesale:Number(document.getElementById("priceWholesale").value||0)
+  });
+
+  save();
+  showPage("prices");
+}
+
+function deletePrice(id){
+  data.prices = data.prices.filter(x=>x.id!==id);
+  save();
+  showPage("prices");
+}
+
+function partsPage(){
+  return `
+    <h2 class="page-title">قطع الغيار</h2>
+    <p class="page-subtitle">إدارة قطع غيار دراعات PS4 وPS5.</p>
+
+    <div class="panel">
+      <div class="form-grid">
+        <div class="field">
+          <label>المنصة</label>
+          <select id="partConsole">
+            <option>PS4</option>
+            <option>PS5</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>اسم القطعة</label>
+          <input id="partName" placeholder="اسم القطعة">
+        </div>
+
+        <div class="field">
+          <label>النوع</label>
+          <select id="partType">
+            <option>مفردة</option>
+            <option>مزدوجة (ترقيم/امامي)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>قطاعي</label>
+          <input id="partRetail" type="number" value="0">
+        </div>
+
+        <div class="field">
+          <label>تجاري</label>
+          <input id="partWholesale" type="number" value="0">
+        </div>
+
+        <div class="field">
+          <label>العدد</label>
+          <input id="partQuantity" type="number" value="1" min="0">
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn green" onclick="addPart()">إضافة وحفظ</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      ${data.parts.length?`
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>المنصة</th>
+              <th>القطعة</th>
+              <th>النوع</th>
+              <th>قطاعي</th>
+              <th>تجاري</th>
+              <th>العدد</th>
+              <th>حذف</th>
+            </tr>
+            ${data.parts.map(p=>`
+              <tr>
+                <td>${esc(p.console)}</td>
+                <td>${esc(p.name)}</td>
+                <td>${esc(p.type)}</td>
+                <td>${p.retail}</td>
+                <td>${p.wholesale}</td>
+                <td>${p.quantity}</td>
+                <td><button class="btn red" onclick="deletePart(${p.id})">حذف</button></td>
+              </tr>
+            `).join("")}
+          </table>
+        </div>
+      `:`<div class="empty">لا توجد قطع غيار محفوظة.</div>`}
+    </div>
+  `;
+}
+
+function addPart(){
+  const name = document.getElementById("partName").value.trim();
+
+  if(!name){
+    alert("اكتب اسم القطعة");
+    return;
+  }
+
+  data.parts.push({
+    id:Date.now(),
+    console:document.getElementById("partConsole").value,
+    name:name,
+    type:document.getElementById("partType").value,
+    retail:Number(document.getElementById("partRetail").value||0),
+    wholesale:Number(document.getElementById("partWholesale").value||0),
+    quantity:Number(document.getElementById("partQuantity").value||0)
+  });
+
+  save();
+  showPage("parts");
+}
+
+function deletePart(id){
+  data.parts = data.parts.filter(x=>x.id!==id);
+  save();
+  showPage("parts");
+}
+
+function pendingPage(){
+  return `
+    <h2 class="page-title">الفواتير المعلقة</h2>
+    <div class="panel">
+      ${invoiceListPageContent(data.invoices.filter(x=>x.status==="معلقة"))}
+    </div>
+  `;
+}
+
+function deliveryPage(){
+  return `
+    <h2 class="page-title">الاستلام والتسليم</h2>
+    <div class="panel">
+      ${invoiceListPageContent(data.invoices.filter(x=>x.status==="تم التسليم"))}
+    </div>
+  `;
+}
+
+function invoiceListPageContent(list){
+  if(!list.length) return `<div class="empty">لا توجد فواتير هنا.</div>`;
+
+  return `
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>الكود</th>
+          <th>العميل</th>
+          <th>الهاتف</th>
+          <th>التاريخ</th>
+          <th>الحالة</th>
+        </tr>
+        ${list.map(x=>`
+          <tr>
+            <td>${esc(x.code)}</td>
+            <td>${esc(x.customer)}</td>
+            <td>${esc(x.phone)}</td>
+            <td>${esc(x.date)}</td>
+            <td>${esc(x.status)}</td>
+          </tr>
+        `).join("")}
+      </table>
+    </div>
+  `;
+}
+
+function salesPage(){
+  return `
+    <h2 class="page-title">فاتورة بيع</h2>
+
+    <div class="panel">
+      <div class="form-grid">
+        <div class="field">
+          <label>اسم العميل</label>
+          <input id="saleCustomer">
+        </div>
+
+        <div class="field">
+          <label>البيان</label>
+          <input id="saleDescription">
+        </div>
+
+        <div class="field">
+          <label>المبلغ</label>
+          <input id="saleAmount" type="number" value="0">
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn green" onclick
