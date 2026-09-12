@@ -414,17 +414,17 @@ function showPage(page, button){
         <div class="info-card">
           <h3>قطع غيار PS4</h3>
           <p>إضافة وتعديل وحذف قطع غيار دراعات PS4.</p>
-          <button class="btn" onclick="alert('إضافة قطعة PS4')">
-            إضافة قطعة
-          </button>
+        <button class="btn" onclick="addPart('PS4')">
+  إضافة قطعة
+</button>
         </div>
 
         <div class="info-card">
           <h3>قطع غيار PS5</h3>
           <p>إضافة وتعديل وحذف قطع غيار دراعات PS5.</p>
-          <button class="btn" onclick="alert('إضافة قطعة PS5')">
-            إضافة قطعة
-          </button>
+        <button class="btn" onclick="addPart('PS5')">
+  إضافة قطعة
+</button>
         </div>
       </div>
     `,
@@ -544,7 +544,42 @@ if(localStorage.getItem("fantasyTheme")==="light"){
   document.body.classList.add("light");
   document.getElementById("lightBtn").textContent="☀️";
 }
-</script>
+</script>function addPart(type) {
+  const name = prompt("اكتب اسم القطعة:");
+
+  if (!name || !name.trim()) {
+    return;
+  }
+
+  const partType = prompt(
+    "اكتب نوع القطعة:\nمفردة\nمزدوجة (ترقيم/امامي)"
+  );
+
+  if (!partType || !partType.trim()) {
+    return;
+  }
+
+  const retail = prompt("اكتب سعر القطاعي:");
+  const commercial = prompt("اكتب سعر التجاري:");
+
+  const parts = JSON.parse(
+    localStorage.getItem("fantasyParts") || "[]"
+  );
+
+  parts.push({
+    id: Date.now(),
+    console: type,
+    name: name.trim(),
+    type: partType.trim(),
+    retail: retail || "0",
+    commercial: commercial || "0",
+    quantity: 0
+  });
+
+  localStorage.setItem("fantasyParts", JSON.stringify(parts));
+
+  alert("تمت إضافة القطعة بنجاح ✅");
+}
 
 </body>
 </html>
